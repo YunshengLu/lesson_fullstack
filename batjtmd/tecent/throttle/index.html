@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">停下</button>
+    <!-- 每隔多久就定时一下
+    启动一个定时器(setInterval), 在点击停下按钮后，消除定时器 -->
+    <script>
+        const btn = document.querySelector('#btn');
+        let interval = null;
+        btn.addEventListener('click',()=>{
+            // console.log(this);
+            clearInterval(interval);
+        });
+        // var 声明， i -> window
+        // var i = 1;
+        let i = 1;
+        let b = 2;
+        // call 
+        // 作用域链查找
+        // this -> window
+        console.log(window.i);
+        console.log(this);
+        // 定时器对象 定时器id
+        interval = setInterval(() => {
+            // 箭头函数 简版的函数
+            console.log(i++);
+            // undefined
+            // console.log(this.i);
+            // // NaN
+            // console.log(this.b++);
+        }, 1000)
+        // console.log(interval);
+    </script>
+</body>
+
+</html>

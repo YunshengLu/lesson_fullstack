@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Updata CSS Skills With <span class="h1">JS</span></h2>
+    <div class="controls">
+        <div class="fields">
+            <label for="spacing">Spacing</label>
+            <!-- 输入控件 html5 更加强大的表单类型 -->
+            <input type="range" min="10" max="200" id="spacing" name="spacing" value="150"
+            data-num="120"
+             data-sizing="px">
+            <span id="spacing__res">150px</span>
+        </div>
+
+        <div class="fields">
+            <label for="blur">Blur</label>
+            <!-- 输入控件 html5 更加强大的表单类型 -->
+            <input type="range" min="0" max="25" id="blur" name="spacing" value="15"
+             data-sizing="px">
+            <span id="blur__res">15xp</span>
+        </div>
+
+        <div class="fields">
+            <label for="color">Base Color</label>
+            <!-- 输入控件 html5 更加强大的表单类型 -->
+            <input type="color" min="0" max="25" id="color" name="color" value="#ffc600">
+            <span id="color__res">#ffc600</span>
+        </div>
+    </div>
+    <script>
+        const inputs = document.querySelectorAll('.fields input');
+        // console.log(inputs);
+        inputs.forEach(function(input){
+            // console.log(input);
+            input.addEventListener('change', function(event){
+                // 抽象能力     一旦在复制重复 停下 调整思维 习惯
+                // console.log(this);
+                const res = '#' + this.id + '__res';
+                // console.log(res); 
+                document
+                    .querySelector(res)
+                    .innerText = this.value + (this.dataset.sizing?this.dataset.sizing:'');
+            })
+        })
+        /*
+        const spacingInput = document.querySelector('#spacing');
+        // console.log(spacingInput);
+        const blurInput = document.querySelector('#blur');
+        // js 事件驱动型的语言
+        // console.log(spacingInput);
+        // this 在js中是最重要的基础，指向对象
+        // 事件处理函数中，this指向事件发生的对象
+
+        spacingInput.addEventListener('change', function (event) {
+            // console.log(event.target == this);
+            console.log(this.value);
+            document.querySelector('#spacing__res').innerText = 
+            this.value + this.dataset.sizing;
+        })
+        blurInput.addEventListener('change', function (event) {
+            document.querySelector('#blur__res').innerText =
+            this.value + this.dataset.sizing;
+        })
+        */
+    </script>
+</body>
+
+</html>

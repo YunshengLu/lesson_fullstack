@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 浏览器 上网代理 ， 运行页面时 js的宿主环境
+        // 局部变量
+        function func() {
+            let c = 3;  //局部变量
+        }
+
+        // 全局变量
+        // 变量名 地址的映射 属于运行环境的作用域
+        let d; // undefined 没有值 类型未定义 空间起始地址有，空间大小未定义
+        var a = 1; // var es5 及之前 js 变量常量声明的关键字
+        const name = "234";
+        let b = 2; // let const es6 2015 之后提供的声明变量常量的关键字
+
+        /**
+         * js函数名首字母大写，默认是类的构造函数
+        */
+        function Flower(type, num) {
+            // this 指针，指向对象
+            // 只有函数里面有this
+            // 指向构造函数运行时的对象
+            console.log(this);
+            this.type = type;
+            this.num = num;
+        }
+
+        const rose = new Flower('油菜花', 1);
+        console.log(rose.type);
+        const rose1= new Flower('玫瑰花', 1);
+        console.log(rose1.type,rose1.num);
+        // 对象字面量
+        const obj = {
+            name: '孙悟空',
+            age: 1000,
+            home: '花果山',
+            sex: '男'
+        }
+        // 对象由 属性，方法 组成
+
+        // 对象字面量  talk in js   
+        const xiaoming = {
+            name: '小明',
+            age: 20,
+            hometown: '九江',
+            sex: '男',
+            isSingle: true,
+            gf: null,
+            work_status: undefined,
+            // 参数 
+            sendFlower(target) {
+                const flower = new Flower('玫瑰',99)
+                console.log(this);
+                // let xx = 1;
+                // xiaomei
+                // console.log(target)
+                // 送花代码 ?
+                // target 类型是对象， 对象上有receiveFlower 方法 
+                target.receiveFlower(this,flower);
+            }
+            // null  undefined 
+        }
+        // 送花，  
+        // 对象由哪两部分组成？ 属性， 方法
+        // 女主角 
+        // [] 数组 {} 对象 
+        const xiaomei = {
+            name: '小美',
+            age: 18,
+            receiveFlower(sender) {
+                console.log('收到了' + sender.name + '送的花');
+            }
+        }
+
+        xiaoming.sendFlower(xiaomei);
+    // console.log(xx);
+    </script>
+</body>
+
+</html>

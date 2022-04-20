@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #cats li {
+            background-color: pink;
+            height: 40px;
+            line-height: 40px;
+            position: relative;
+            color: white;
+            padding: 10px;
+        }
+
+        #cats li:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: green;
+            transform: scaleY(0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="cats"></ul>
+    <script>
+        const cats = [
+            {
+                name: 'Snickers',
+                age: 2
+            },
+            {
+                name: 'Hugo',
+                age: 1
+            },
+            {
+                name: 'Tom',
+                age: 3
+            }
+        ];
+
+        const oUL = document.getElementById('cats');
+
+        // oUL.innerHTML += `
+        // <li>
+        //     ${cat.name}-- ${cat.age}
+        // </li>
+        // `
+        oUL.innerHTML =cats.map((cat) => `
+            <li>
+                名字：${cat.name} -- 年纪：${cat.age}
+            </li>
+            `).join('');
+
+    </script>
+</body>
+
+</html>

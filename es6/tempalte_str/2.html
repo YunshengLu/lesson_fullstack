@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="userTable">
+        <td>名字</td>
+        <td>家乡</td>
+        <td>城市</td>
+        <td>工作</td>
+        <td>格言</td>
+    </table>
+    <script>
+        // 把对象显示到页面上
+        const person = {
+            name: 'John',
+            hometown: 'nanc',
+            city: 'nancang',
+            job: 'student',
+            bio: 'see hello'
+        }
+
+
+        const tableElement = document.querySelector('#userTable');
+        tableElement.innerHTML += `
+        <tr>
+            <td>${person.name}</td>
+            <td>${person.hometown}</td>
+            <td>${person.city}</td>
+            <td>${person.job}</td>
+            <td>${person.bio}</td>
+        </tr>
+        `;
+    </script>
+</body>
+</html>

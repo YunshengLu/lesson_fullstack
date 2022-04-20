@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./btn.css">
+    <title>WEUI-Button</title>
+</head>
+<body>
+    <!-- html 机构 由外到内 从上到下 -->
+    <!-- 取类名是个技术活， 从大厂学习一些词汇 
+        1. page结构命名套路
+        2. __ BEM 国际命名规范
+        3. page Block 兴起一个区块 页面顶级区块 B
+        4. page__hd 子元素 Element  E
+        5. Modifier  状态    M
+
+        6. 组件命名btn 可以复用的按钮组件   weui?
+            .weui-btn   .jd-btn     .tm-btn
+            项目名或公司名 作为前缀 .btn 新的一个block
+            weui-btn 按钮的基础类   再加状态类名
+    -->
+    <div class="page">
+        <div class="page__hd">
+            <h1 class="page__title">Button</h1>
+            <p class="page__desc">按钮</p>
+        </div>
+        <div class="page__bd">
+            <div class="button-sp-area">
+                <a href="javascript:;" class="weui-btn weui-btn_primary">主要操作</a>
+                <a href="javascript:;" class="weui-btn weui-btn_default">次要操作</a>
+                <!-- disabled禁用按钮 -->
+                <a href="javascript:;" disabled class="weui-btn weui-btn_disabled">次要操作</a>
+            </div>
+        </div>
+        <!-- <div class="page__ft"></div></div> -->
+</body>
+</html>

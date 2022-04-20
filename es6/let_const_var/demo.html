@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(a); // 变量定义提升 值并没有提升 
+        console.log(fn()); // 函数也会变量提升，值也会提升
+        console.log(pizza); // let const 不支持变量提升
+
+        var a = '1'
+        const pizza = '菠萝'
+        function fn(){
+            console.log('fn');
+        }
+    </script>
+</body>
+</html>
