@@ -39,13 +39,12 @@ let animal = new Animal();
 animal.sayHi(); // sayHi 实例方法
 // Animal.sayHi(); // TypeError: Animal.sayHi is not a function
 console.log(Animal.prototype); // class:{} 构造函数:{ sayHi: [Function: sayHi], sayNo: [Function: sayNo] }
-console.log(Animal.__proto__); // {}
+console.log(animal.__proto__); // { sayHi: [Function: sayHi], sayNo: [Function: sayNo] }
 console.log(Animal.prototype.__proto__); // [Object: null prototype] {}
-console.log(Animal.__proto__.__proto__); // [Object: null prototype] {}
+console.log(animal.__proto__.__proto__); // [Object: null prototype] {}
 Animal.prototype.sayHi(); // sayHi
 // animal.sayNo(); // TypeError: animal.sayNo is not a function
 Animal.sayNo(); // sayNo 静态方法
 
 Animal.Color = 'black';
-console.log(Animal.__proto__.__proto__); // [Object: null prototype] {}
 console.log(Animal.Color); // black
