@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1 {
+            padding: 10px;
+            border: 3px solid black;
+        }
+
+        .div2 {
+            border: 3px solid red;
+            /* overflow: hidden; */
+        }
+
+        .div2 img {
+            float: left;
+            padding: 10px;
+        }
+
+        .div2:after {
+            content: "";
+            display: block;
+            clear: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <img src="https://i0.hdslb.com/bfs/album/e7e15e3b81e64d8c801d119ba4f2db9ec16e2092.png@2072w.webp" alt="">
+    </div>
+    <div class="div2">
+        <img src="https://i0.hdslb.com/bfs/album/f79914b203a57404de85bf73919cbd57347559ea.png@2072w.webp" alt="">
+    </div>
+</body>
+
+</html>
