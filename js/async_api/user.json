@@ -1,0 +1,12 @@
+{
+    "users": [
+        {
+            "name": "yx",
+            "hometown": "南昌"
+        },
+        {
+            "name": "yy",
+            "hometown": "赣州"
+        }
+    ]
+}
