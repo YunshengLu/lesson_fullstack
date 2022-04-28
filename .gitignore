@@ -1,0 +1,33 @@
+node_modules
+#  忽略node_modules的单文件 
+*.zip            
+#  表示忽略所有 .zip结尾的文件
+/dist          
+# 忽略项目根目录下的 dist 文件夹,但不包括子目录下的dist文件夹
+build/          
+#  忽略 build/目录下的所有文件，包括子目录下的文件
+.deploy_git/
+node_modules/
+public/
+
+//.gitignore
+ 
+.DS_Store
+ 
+# local env files
+.env.local
+.env.*.local
+ 
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+ 
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
