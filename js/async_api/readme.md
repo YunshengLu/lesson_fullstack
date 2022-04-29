@@ -9,7 +9,7 @@
 
 
         xhr = new XMLHttpRequest  xhr  实例     
-        <!-- request 多动请求方法  get 明文  url输入   post  加密 -->
+        <!-- request 多种请求方法  get 明文  url输入   post  加密 -->
         xhr.open("GET", "http://127.0.0.1:3000/posts",true);
         xhr.send();     
         xhr.onreadystatechange = function(event){
