@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="loginForm" method="post" action="/login">
+        <div>
+            <label for="phoneInput">手机</label>
+            <input type="text" name="phone" id="phoneInput" placeholder="请输入手机" required pattern="/^[0-9]{11}$/">
+        </div>
+        <div>
+            <button type="submit">提交</button>
+        </div>
+    </form>
+    <script>
+        const oForm = document.forms['loginForm'];
+        oForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const phone = oForm['phone'].value.trim();
+            // console.log(phone);
+            // 如果字符串为空
+            // required html5 input 才有的属性 有些浏览器不兼容，需要判断一下
+            if (!phone.length) {
+                console.log('手机号不能为空');
+                return;
+            }
+            if(!/^[0-9]{11}$/.test(phone)){
+                alert('手机号格式有误')
+            }
+            this.submit();
+        })
+    </script>
+</body>
+
+</html>
