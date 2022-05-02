@@ -24,6 +24,17 @@
     return pre;
 }; */
 
+// es6特性 解构赋值，用这种不需要注意指针移动顺序了，也不需要中间变量next存top.next的地址
+/* var reverseList = function(head) {
+    let top = head;
+    let pre = null;
+    while(top !== null){
+        [top.next,pre,top] = [pre,top,top.next];
+    }
+    return pre;
+};
+ */
+
 var reverseList = function (head) {
      // 递归结束条件
     if (head == null || head.next == null) return head;
