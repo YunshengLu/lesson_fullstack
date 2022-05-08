@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML之LocalStorage</title>
+    <!-- 职责分离 git -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2>LOCAL TAPAS</h2>
+        <p></p>
+        <ul class="plates">
+            <li>Loading Tapas...</li>
+        </ul>
+        <form action="" class="add-items">
+            <input type="text" name="item" autofocus placeholder="Item Name" required>
+            <input type="submit" value="+ Add Item">
+        </form>
+    </div>
+    <script>
+        /*
+        1. todolist form + ul
+        2. loading
+        3. 前端的数据持久化  前端有数据库，5M
+        */
+        //    DOM 树
+        // const let 与var不同 不会提升，进入暂时性死区
+        // es6 认为 变量提升其实不好
+        // console.log(addItems);
+        // console.log(addItem);
+        // console.log(a); // undefined 申明提升了，但是值没有
+        // var a = 1;
+        const addItems = document.querySelector('.add-items'); // 性能
+        const itemsList = document.querySelector('.plates');
+        const items = JSON.parse(localStorage.getItem('items')) || []; // 列表
+
+        // 将todos 显示到列表
+        // es6 参数默认值
+        function populateList(plates = [], platesList) {
+            platesList.innerHTML = plates.map((plate, i) => `
+            <li>
+                <input type="checkbox" data-index=${i} id="item${i}"
+                ${plate.done ? 'checked' : ''}/>
+                <label for="item${i}">${plate.text}</label>
+            <li>
+            `)
+        }
+
+        function addItem(event) {
+            // console.log('-------');
+            event.preventDefault();
+            const text = this.querySelector('[name=item]').value;
+            // console.log(text);
+            const item = { // obj 新建未完成的对象
+                text, // es6 对象省略写法
+                done: false,
+            }
+            items.push(item);
+            populateList(items, itemsList);
+            // Storage
+            // items 
+            // console.log(items);
+            // console.log(JSON.stringify(items));
+            localStorage.setItem('items', JSON.stringify(items))
+            this.reset();
+        }
+        // function init() {
+        //     // 取出 localStorage
+        //     // [] .length > 0
+        //     // populateList
+        //     const storageItems = JSON.parse(localStorage.getItem('items'));
+        //     if (storageItems.length) {
+        //         // for(let item of storageItems){
+        //         //     items.push(item);
+        //         // }
+
+        //         // items = [...storageItems];
+        //         populateList(storageItems, itemsList);
+        //     }
+        // }
+        addItems.addEventListener('submit', addItem);
+        // init();
+        populateList(items, itemsList);
+    </script>
+</body>
+
+</html>
