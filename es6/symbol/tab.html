@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: 0;
+            /* 
+            ios android 移动端 webkit 统一了
+            input a button img 浏览器轮廓不统一 webkit(开源内核) chrome(商业) ie 
+            */
+        }
+
+        body {
+            color: #111;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .pj_tabbar {
+            display: flex;
+        }
+
+        .pj_tababbar__item {
+            flex: 1;
+            height: 50px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .pj_tababbar__item a {
+            display: block;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .pj_tababbar__item a:first-child {
+            border-right: 1px solid #ddd;
+        }
+
+        .pj_tababbar__item_on {
+            background-color: pink;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 手感 -->
+    <div class="pj_tabbar">
+        <div class="pj_tababbar__item pj_tababbar__item_on">
+            <a href="#" data-type="basic">
+                basic
+            </a>
+        </div>
+        <div class="pj_tababbar__item">
+            <a href="#" data-type="super">
+                super
+            </a>
+        </div>
+    </div>
+    <div id="list">
+
+    </div>
+    <script>
+        const list = document.getElementById('list');
+        const links = document.querySelectorAll('.pj_tababbar__item a');
+        // const tabTypes = {
+        //     basic: Symbol(), /* es6里新的简单数据类型 ，独一无二的 */
+        //     super: Symbol(),
+        // }
+        // java等大型语言，tab切换时，为了可读性 tabTypes 对象常量
+        // 所有tab类型的管理统一
+        const tabTypes = {
+            basic: 'basic',
+            super: 'super',
+        }
+
+
+        links.forEach(link => {
+            link.addEventListener('click', function (event) {
+                // a 带来交互感
+                event.preventDefault();
+                const type = event.target.dataset.type;
+                const parent = this.parentNode;
+                // console.log(parent);
+                if (!parent.classList.contains('pj_tababbar__item_on')) {
+                    document.querySelector('.pj_tababbar__item_on')
+                        .classList.remove('pj_tababbar__item_on');
+                }
+                parent.classList.add('pj_tababbar__item_on');
+
+                // console.log('basic' == tabTypes.basic);
+                // if(type == 'basic'){
+                if (type == tabTypes.basic) {
+                    console.log('----------');
+                    list.innerText = 'basic';
+                }
+                // if(type == 'super'){
+                if (type == tabTypes.super) {
+                    console.log('----------');
+                    list.innerText = 'super';
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
