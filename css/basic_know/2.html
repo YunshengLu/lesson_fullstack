@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            /* background-color: #000; */
+            /* margin: 10px; */
+            outline: 1px solid red;
+            padding: 10px;
+        }
+        /* .box2{
+            margin-top: 20px;
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+        <div style="overflow: hidden;">
+            <!--
+                 div并不能创建BFC能力，怎么让他具备？
+                 BFC 拥有独立的不受外界影响的新的格式化上下文
+                 FFC = BFC + Flex
+             -->
+            <div class="box"></div>
+        </div>
+    </div>
+</body>
+</html>
