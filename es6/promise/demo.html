@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const posts = [
+            { title: 'I love JavaScript', author: 'yz', id: 1 },
+            { title: 'Css', author: 'B', id: 2 },
+            { title: 'Dev tools webpack', author: 'CEO' }
+        ];
+
+        const authors = [
+            { name: 'yz', hometown: 'nc', bio: '面向对象编程' }
+        ]
+
+        function getPostById(id) {
+            // id 找到文章
+            // const post = posts.find(post => post.id === id)
+            // const { author } = post;
+            // console.log(authors.find(item => item.name === author));
+            // return post;
+
+            return new Promise((resolve, reject) => {
+                // resolve()
+                console.log('----------');
+                setTimeout(() => {
+                    const post = posts.find(post => post.id === id)
+                    console.log(post);
+                    if (post) {
+                        resolve(post);
+                    } else {
+                        let err = new Error('没有数据');
+                        reject(err);
+                    }
+                }, 200)
+            })
+        }
+        getPostById(10)
+            .then((data) => {
+                console.log(data, '//////////');
+            })
+            .catch((err) => {
+                console.log(err.message);
+            })
+
+        // localStorage.setItem('posts', JSON.stringify(posts));
+
+    </script>
+</body>
+
+</html>
