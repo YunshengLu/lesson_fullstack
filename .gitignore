@@ -9,7 +9,7 @@ build/
 .deploy_git/
 node_modules/
 public/
-
+.gitignore
 //.gitignore
  
 .DS_Store
