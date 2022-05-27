@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // url => 资源  接口
+        // https://api.github.com/users/wesbos
+        // https://api.github.com/users/YunshengLu
+
+        (async function () {
+            // await 后 promise 执行的，resolve 把结果给左边
+            // const response = await fetch("https://api.github.com/users/YunshengLu");
+            // const data = await response.json();
+            // console.log(data);
+            // const response2 =  await fetch("https://api.github.com/users/wesbos");
+            // const data2 = await response2.json();
+            // console.log(data2)
+            const p1 = fetch("https://api.github.com/users/YunshengLu");
+            const p2 = fetch("https://api.github.com/users/wesbos");
+            const res = await Promise.all([p1,p2]) // static  并发执行
+            // console.log(res); // [Response, Response]
+            const dataPromises = res.map(r => r.json());
+            const [wes,me] = await Promise.all(dataPromises)
+            console.log(wes,me);
+        })()
+
+        // fetch("https://api.github.com/users/YunshengLu")
+        //     .then(data => data.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+    </script>
+</body>
+
+</html>
