@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import _ from 'lodash'
 import Editor from './Editor'
 import moment from 'moment' // 时间库
-import 'moment/locale/zh-cn'
+import 'moment/src/locale/zh-cn'
 moment.locale('zh-CN')
 
 
