@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Link to="/user">用户</Link>
       {/* <User/> */}
-      {/* 现有路由 -> 再有页面级别组件 -> 组件构成页面  路由配置 */}
+      {/* 先有路由 -> 再有页面级别组件 -> 组件构成页面  路由配置 */}
       <Routes>
         <Route path='/user' element={<User />}></Route>
         <Route path='/address' element={<Address />}></Route>
