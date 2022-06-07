@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="wrap">
+        <div class="nav">
+            <li><a href="javascript:;" data-path="index">首页</a></li>
+            <li><a href="javascript:;" data-path="news">新闻</a></li>
+            <li><a href="javascript:;" data-path="about">关于</a></li>
+        </div>
+    </section>
+    <div id="router" class="router">
+
+    </div>
+    <script>
+        (function() {
+            // 不去污染全局
+            // let a
+            // 作用域？
+            const routerEle = document.getElementById("router");
+            routerEle.innerHTML = '<p>显示内容区域</p>';
+            [...document.querySelectorAll('a')].forEach(link => {
+                link.addEventListener('click',function(){
+                    var text = this.innerText;
+                    // console.log(text);
+                    var url = this.dataset.path;
+                    // console.log(url);
+                    routerEle.innerHTML = text;
+                    // html5 history
+                    // 带来了页面url 的改变,SPA
+                    history.pushState(null,null,'#/' + url);
+                })
+            })
+
+            // window.onhashchange = function(event) {
+            //     console.log(event);
+            // }
+            window.addEventListener('popstate',function(event){
+                console.log(event);
+            })
+        })()
+    </script>
+</body>
+</html>
