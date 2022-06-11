@@ -36,7 +36,7 @@ const User = () => {
                                 <img src={IconUser} style={{width: '50px', display: 'block'}} />
                             </CellHeader>
                             <CellBody>
-                                <p>刘利民</p>
+                                <p>BEIYUE</p>
                                 <p style={{fontSize: '13px', color: '#88888888'}}>欢迎来到图书馆</p>
                             </CellBody>
                         </Cell>
