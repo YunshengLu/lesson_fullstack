@@ -1,0 +1,223 @@
+/* css reset */
+body, div, dl, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color: #111;
+    background: #fff;
+}
+
+body, td, th {
+    font: 12px Helvetica,Arial,sans-serif;
+    line-height: 1.62;
+}
+
+body {
+    padding-top: 30px;
+}
+
+a {
+    cursor: pointer;
+}
+
+a:visited {
+    color: #669;
+    text-decoration: none;
+}
+
+/* 业务样式 */
+#douban-logo {
+    display: inline-block;
+    zoom: 1;
+    /* 兄弟 */
+    vertical-align: middle;
+    padding: 0;
+    font-size: 12px;
+    font-weight: normal;
+    background: url(https://img3.doubanio.com/f/sns/19886d443852bee48de2ed91f4a3bdfdaf8c809c/pics/nav/logo_db.png);
+    overflow: hidden;
+}
+
+#douban-logo a{
+    display: block;
+    line-height: 10em;
+}
+
+#anony-nav {
+    width: 1080px;
+    margin: 0 auto 25px;
+}
+
+#anony-nav .anony-nav-links {
+    float: right;
+    margin-top: 6px;
+}
+
+ul {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+#anony-nav .anony-nav-links li {
+    display: inline-block;
+    zoom: 1;
+    margin: 0 14px 0 0px;
+}
+
+a {
+    cursor: pointer;
+}
+
+a:link {
+    color: #37a;
+    text-decoration: none;
+}
+
+#anony-nav .anony-nav-links li a {
+    display: inline-block;
+    zoom: 1;
+    width: 40px;
+    height: 20px;
+    overflow: hidden;
+    margin: 0;
+    line-height: 20em;
+    outline: none;
+    vertical-align: middle;
+    background: transparent url(https://img3.doubanio.com/f/sns/8536084688879cb1137e8efdff30e59614ff2f86/pics/sns/anony_home/anony_nav_logo.png) no-repeat 100% 100%;
+}
+
+#anony-nav .anony-nav-links li .lnk-book {
+    background-position: 0 0;
+}
+
+#anony-nav .anony-nav-links li .lnk-movie {
+    background-position: -60px 0;
+}
+
+#anony-nav .anony-nav-links li .lnk-music {
+    background-position: -120px 0;
+}
+
+#anony-nav .anony-nav-links li .lnk-events {
+    background-position: -299px 0;
+}
+
+#anony-nav .anony-nav-links li .lnk-group {
+    background-position: -180px 0;
+}
+
+#anony-nav .anony-nav-links li .lnk-read {
+    background: transparent url(https://img3.doubanio.com/f/sns/f3ba00ef46f185989b70ac6841d9f4d67b6e3a25/pics/sns/anony_home/ic_read_home_nav.png) no-repeat 100% 100%;
+    background-size: cover;
+}
+
+#anony-nav .anony-nav-links li .lnk-fm {
+    background-position: -241px 0;
+}
+
+#anony-nav .anony-nav-links li .lnk-shijian {
+    margin-bottom: 1px;
+    background: transparent url(https://img3.doubanio.com/f/sns/b474dd402e4293943146a4789de3dae88ec96636/pics/sns/anony_home/ic_shijian_home_nav.png) no-repeat 100% 100%;
+    background-size: cover;
+}
+
+#anony-nav .anony-nav-links li .lnk-market {
+    width: 42px;
+    background-position: -421px 0;
+}
+
+#anony-nav .anony-srh .bn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    background: url(https://img3.doubanio.com/f/sns/f71f15922ebd7c0ff0ea0e7a25577529efd8981a/pics/icon/bn_srh_1.png) 50% 50% no-repeat;
+}
+
+#anony-nav .anony-srh {
+    position: relative;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: middle;
+    width: 270px;
+    height: 30px;
+    border: 1px solid #c3c3c3;
+    margin-top: -15px;
+}
+
+form{
+    display: block;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    border: 0px;
+}
+
+#anony-nav .anony-srh .inp {
+    display: block;
+    height: 30px;
+    overflow: hidden;
+}
+
+input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+
+#anony-nav .anony-srh .inp input {
+    width: 240px;
+    border: none;
+    font-size: 13px;
+    height: 20px;
+    padding: 5px;
+}
+
+#anony-nav .anony-srh .bn input {
+    border: none;
+    background: transparent;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    color: transparent;
+    cursor: pointer;
+}
+
+input {
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
