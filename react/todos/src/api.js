@@ -50,10 +50,10 @@ export const fetchTodos = withDelay(params => {
     let result = todos;
     if(tab){
         switch (tab){
-            case 'finished':
+            case '已完成':
                 result = result.filter(todo => todo.finished === true);
                 break;
-            case 'unfinished':
+            case '未完成':
                 result = result.filter(todo => todo.finished === false);
                 break;
             default:
