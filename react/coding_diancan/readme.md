@@ -29,3 +29,22 @@
 - 切页面之前 移动端先自适应页面      
     html fontSize 动态计算           
     不要用px 用 rem
+
+- 城市选择功能      
+    1. city.json 城市数据 接口提供 缺点，每次都得请求             
+        下一个版本，配置文件 项目的包有点大
+    2. 接口都放在 api/request 下方便管理
+    3. link  to  复杂版本接受一个对象 {{ pathname:'', search:'' }}           
+        react-router-dom useSearchParams get('name')
+
+- 子组件不做数据请求，由父组件统一并传过来           
+    子组件不做复杂状态，用props 传过来
+
+- 幻灯片功能       
+    1. 使用了swiper
+    2. 全局引用css
+    3. 固定的html 结构             
+        .swiper-container>.swiper-wrapper>.swiper-slide{n}          
+        .swiper-pagination 分页
+    4. 组件挂载后，useEffect          
+        实例化幻灯片功能 new Swiper('.btn_banners')
