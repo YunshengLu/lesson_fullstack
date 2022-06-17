@@ -7,6 +7,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import './assets/styles/reset.css'
 // import './assets/font/iconfont.css'
 import './modules/rem'  // modules下的rem做自适应
+import 'swiper/dist/css/swiper.min.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
