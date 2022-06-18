@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="banner">
+        <ul id="imglist">
+            <li><img src="./images/1.jpg" alt=""></li>
+            <li><img src="./images/2.jpg" alt=""></li>
+            <li><img src="./images/3.jpg" alt=""></li>
+            <li><img src="./images/4.jpg" alt=""></li>
+            <li><img src="./images/1.jpg" alt=""></li>
+        </ul>
+        <ul class="iconlist">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="prev">《</div>
+        <div class="next">》</div>
+    </div>
+    <script>
+        let left = 0;
+        let time;
+        let imglist =  document.getElementById('imglist');
+        let prev = document.querySelector('.prev');
+        let next = document.querySelector('.next')
+        const run = () =>{
+            if(left <= -3200){
+                left = 0;
+            }
+            imglist.style.marginLeft = left + 'px'
+            var n = (left % 800 == 0) ? 2000 : 0;
+            left -= 10;
+            time = setTimeout(run,n)
+        }
+        run();
+
+        const imgChange = (n) => {
+            let lt = -(n * 800);
+            imglist.style.marginLeft = lt + 'px';
+            left = lt;
+        }
+        prev.addEventListener("click", () => {
+            let prevto = Math.floor(-left / 800) - 1;
+            if(prevto == -1){
+                prevto = 3;
+            }
+            imgChange(prevto);
+        })
+        next.addEventListener("click", () => {
+            let nextto = Math.floor(-left / 800) + 1;
+            if(nextto == 4){
+                nextto == 0;
+            }
+            imgChange(nextto)
+        })
+    </script>
+</body>
+</html>
