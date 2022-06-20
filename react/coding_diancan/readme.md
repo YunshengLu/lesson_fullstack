@@ -48,3 +48,57 @@
         .swiper-pagination 分页
     4. 组件挂载后，useEffect          
         实例化幻灯片功能 new Swiper('.btn_banners')
+
+- 仿站原则与做法
+    1. 想去哪家公司就仿哪家
+    2. 首页面 一模一样              
+        但又不用完全实现功能
+    3. 不重要的功能切页面
+    4. 不要让动态部分撑页面的感觉               
+        给固定高度 rem
+    5. styled-components 生成的类名为何乱？
+
+- css in js 类名逻辑        
+    1. 多人协作时，类名有大概率会发生冲突
+    2. 页面级别组件，npm 第三方组件 一般组件 通用组件 样式组件... 组件太多
+    3. styled-components 生成hash 类名           
+        样式又上去了，但绝对不重复           
+        最外层就好，内层会自动嵌套
+    4. 在jsx 里面直接写className="demo" 没有这个能力的        
+        用styled-components 等 css in js 时，就可以
+
+- 开发套路及最优方案
+    1. 接口都放在api 目录下
+    2. 接口请求在路由级别组件发生，子组件不要去做
+    3. 子组件只负责jsx 提供和styled-components css in js 很完美
+    4. font-awesome 图标真的很多
+
+- 延迟加载路由组件
+    1. 引入文件，还会执行
+    2. 只需要首页一个组件就好         
+        如果可以少加载一点，首页打开肯定更快
+    3. 但是 router 配置 配置所有的路由 
+
+- antd-mobile        
+    antd 的移动版 手机栈        
+    1. NavBar
+    2. navigate(-1)
+
+- 单页应用tabbar 不显示功能 开发及调试
+    1. 有些二级页面 不需要tabbar 
+    2. 完全匹配
+    3. 部分匹配 lastIndexOf  动态路由            
+        - 正则          
+            /^(\/[\w]+)\//
+    4. bug 过程            
+        开始用forEach 来做的          
+        forEach每一项都有一个执行函数，return 不会终止外部函数的运行            
+        bug半天，断点调式，反馈代码执行
+    5. indexOf
+    6. 项目记录里最好有一个断点调试说明  sp
+
+- 项目架构，必须utils
+    工具函数库，工具函数 lodash ？        
+    跨应用实用       
+    请多写注释      
+    上班前期多写注释  sp
