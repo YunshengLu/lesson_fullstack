@@ -8,18 +8,24 @@ export const isPathPartlyExisted = (path) => {
     // 1. path 全部匹配 /cities
     // 2. path 多了  /homedetail/: id/cmments/:id
     const arr = ['/cities', '/homedetail'];
+
+    // 任何情况 结果数组第二项都是arr 里匹配的单项
+    let pathRes = path.split('/')
+    if (pathRes[1] && arr.indexOf(`/${pathRes[1]}`) != -1) return true;
+    return false
+
     // 完全匹配
-    if(arr.indexOf(path) !== -1) return true;
-    if (path.lastIndexOf('/') !== 0){
-            if (path.lastIndexOf('/') !== 0) {
-            const reg = /^(\/[\w]+)\//
-            const matchArr = path.match(reg)
-            const partlyPath = matchArr[1]?matchArr[1]:''
-            if (partlyPath) {
-                return arr.indexOf(partlyPath) !== -1
-            }
-        }
-    }
+    // if(arr.indexOf(path) !== -1) return true;
+    // if (path.lastIndexOf('/') !== 0){
+    //         if (path.lastIndexOf('/') !== 0) {
+    //         const reg = /^(\/[\w]+)\//
+    //         const matchArr = path.match(reg)
+    //         const partlyPath = matchArr[1]?matchArr[1]:''
+    //         if (partlyPath) {
+    //             return arr.indexOf(partlyPath) !== -1
+    //         }
+    //     }
+    // }
 
     // arr.forEach(item => {
     //     // 完全匹配
