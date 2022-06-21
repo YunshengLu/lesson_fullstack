@@ -14,6 +14,9 @@ const Cities = lazy(() =>import ('../pages/Cities'))
 // 当切换到这个路由后加载
 // import HomeDetail from './pages/HomeDetail'
 const HomeDetail = lazy(()=>import ('../pages/HomeDetail'))
+const HomeOrder = lazy(()=>import ('../pages/HomeDetail/HomeOrder'))
+const HomeComment = lazy(()=>import ('../pages/HomeDetail/HomeComment'))
+const HomeBusiness = lazy(()=>import ('../pages/HomeDetail/HomeBusiness'))
 
 export default function RoutesConfig() {
     return (
@@ -24,7 +27,11 @@ export default function RoutesConfig() {
         <Route path='/order' element={<Order />} ></Route>
         <Route path='/mine' element={<Mine />} ></Route>
         <Route path='/cities' element={<Cities />} ></Route>
-        <Route path='/homedetail/:id' element={<HomeDetail />} ></Route>
+        <Route path='/homedetail/:id' element={<HomeDetail />} >
+            <Route path='/homedetail/:id/order' element={ <HomeOrder/> }/>
+            <Route path='/homedetail/:id/comment' element={ <HomeComment/> }/>
+            <Route path='/homedetail/:id/business' element={ <HomeBusiness/> }/>
+        </Route>
         </Routes>
     )
 }
