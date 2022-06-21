@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper } from './style'
 import { useNavigate } from 'react-router'
-import { NavBar, Icon } from 'antd-mobile'
+import { NavBar } from 'antd-mobile'
 
 export default function HomeDetail() {
 
@@ -13,7 +13,7 @@ export default function HomeDetail() {
         <div className="detail-top">
             <NavBar className="detail-left"
                     onLeftClick={() => navigate(-1)}
-                    icon={<Icon type="left" />}
+                    back="返回"
                     >
                         详情
             </NavBar>
