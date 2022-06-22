@@ -1,4 +1,4 @@
-import { useState, Suspense } from 'react'
+import { Suspense } from 'react'
 import './App.css'
 import RoutesConfig from './routes'
 import Header from './components/Header'
