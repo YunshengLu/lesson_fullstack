@@ -12,8 +12,8 @@ const Find = lazy(() =>import ('../pages/Find'))
 const Cities = lazy(() =>import ('../pages/Cities'))
 // 推迟加载，运行 按需加载
 // 当切换到这个路由后加载
-// import HomeDetail from './pages/HomeDetail'
-const HomeDetail = lazy(()=>import ('../pages/HomeDetail'))
+import HomeDetail from '../pages/HomeDetail'
+// const HomeDetail = lazy(()=>import ('../pages/HomeDetail'))
 const HomeOrder = lazy(()=>import ('../pages/HomeDetail/HomeOrder'))
 const HomeComment = lazy(()=>import ('../pages/HomeDetail/HomeComment'))
 const HomeBusiness = lazy(()=>import ('../pages/HomeDetail/HomeBusiness'))
