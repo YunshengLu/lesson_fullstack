@@ -78,7 +78,7 @@ export const Wrapper = styled.div`
                     position: relative;
                     height: 0.653333rem;
                     height: 6.533333vw;
-                    ::after {
+                    /* ::after {
                         content: '';
                         border-style: solid;
                         border-width: 0.146667rem 0 0.146667rem 0.173333rem;
@@ -89,7 +89,7 @@ export const Wrapper = styled.div`
                         left: 1.6vw;
                         top: 0.213333rem;
                         top: 2.133333vw;
-                    }
+                    } */
                 }
             }
         }

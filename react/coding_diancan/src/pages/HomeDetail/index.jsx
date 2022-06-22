@@ -16,15 +16,16 @@ export default function HomeDetail() {
     }
 
     useEffect(() => {
-        console.log('--------------');
-    })
+        // console.log('--------------');
+        navigate(`/homedetail/${id}/order`)
+    },[])
 
     return (
     <Wrapper>
         {/* 路由出栈 */}
         <div className="detail-top">
             <NavBar 
-                    onBack={() => navigate(-1)}
+                    onBack={() => navigate('/home')}
                     back="返回"
                     >
                         详情
@@ -52,7 +53,7 @@ export default function HomeDetail() {
                 </div>
                 <p>公告：本店香锅不单炒，套餐必点！单加菜品需与套餐同时点</p>
             </div>
-            <HomeDetailNav />
+            <HomeDetailNav id={id}/>
             <Outlet />
         </div>
     </Wrapper>
