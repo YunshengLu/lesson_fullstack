@@ -1,0 +1,37 @@
+{
+  "id": "3473002",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6852284",
+      "name": "添加",
+      "font_class": "tianjia",
+      "unicode": "e6de",
+      "unicode_decimal": 59102
+    },
+    {
+      "icon_id": "9839295",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "12097608",
+      "name": "删减",
+      "font_class": "shanjian",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "18724154",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    }
+  ]
+}
