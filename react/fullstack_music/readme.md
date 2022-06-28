@@ -35,3 +35,9 @@
         声明给应用添加数据管理功能     
     2. store 专有目录下redux中的 createStore 创建仓库实例
     3. createStore 方法接受reducer 函数
+
+1. reset        
+    神三元使用了styled-components 提供的 createGlobalStyle 全局样式          
+    styled.div`` wrapper 容器 hash 化       
+    icon       
+2. adapter
