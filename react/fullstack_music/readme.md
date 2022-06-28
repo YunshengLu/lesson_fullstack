@@ -31,7 +31,7 @@
     redux + react-redux
 
 - 数据仓库的搭建过程       
-    1. 从react-reduce 中解构Provider         
+    1. 从react-redux 中解构Provider         
         声明给应用添加数据管理功能     
     2. store 专有目录下redux中的 createStore 创建仓库实例
     3. createStore 方法接受reducer 函数
