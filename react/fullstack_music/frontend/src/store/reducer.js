@@ -6,9 +6,11 @@ import userReducer from './user';
 // 固定的返回 页面需要的状态数据
 // 页面不再管理数据
 import singerReducer from './singer'
+import recommendReducer from './recommend'
 // combineReducers 接受对象配置
 export default combineReducers({
     // key 取个名字,value 对应的reducer 函数
     user: userReducer,
-    singer: singerReducer
+    singer: singerReducer,
+    recommend: recommendReducer
 });
