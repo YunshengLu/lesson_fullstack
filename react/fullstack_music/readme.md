@@ -41,3 +41,41 @@
     styled.div`` wrapper 容器 hash 化       
     icon       
 2. adapter
+
+3. axios 功能点          
+    - 网络请求千千万，api axios 把单例干     
+    - 统一了vue react native app 三端的请求库     
+    - 每个请求 域名 + 端口部分 没必要重复        
+        可以配置到baseURL 中        
+    - 为了切换请求域名的需要        
+        http://localhost:3000         
+    - 拦截器 interceptors.response.use()          
+        解构好res.data 处理错误        
+    interceptors.request.use()          
+    - 登陆时，服务器会给我们一个授权码 token        
+    - 我们每次请求时，需要手工带上        
+        拦截器 request response      
+        req.header 请求头 Authorization 授权信息
+
+- 组件数据管理功能被剥夺              
+    1. redux 管理数据更专业        
+        - store store/index.js       
+        - reducer 集合 交给 store         
+        - combineReducers 提供 reducer      
+        - 各个模块 文章 评论 用户模块 。。。
+        - 每个模块都是一个reducer 函数          
+        - reducer 还可以多次运行       
+        - dispatch 一个他想要的action       
+        - 页面会自动更新           
+        - connect mapStateToProps 获取状态        
+            mapDispatchToProps 触发状态的改变
+
+    2. mapStateToProps 状态读操作
+    3. mapDispatchToProps 写操作           
+        - 状态不可直接修改 redux 起因        
+        - 要有法可依      
+        - dispatch getRankList 异步action redux-thunk 支持               
+            data dispatch(changeRankList) 同步action           
+        - dispatch({type: '',data: }) 在action 里
+        - reducer 根据 type 重新计算     
+        - 状态发生改变，应用了状态的地方MVVM
