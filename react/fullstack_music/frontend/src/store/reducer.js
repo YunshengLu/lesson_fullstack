@@ -7,10 +7,14 @@ import userReducer from './user';
 // 页面不再管理数据
 import singerReducer from './singer'
 import recommendReducer from './recommend'
+import rankReducer from './rank'
+import singersReducer from './singers'
 // combineReducers 接受对象配置
 export default combineReducers({
     // key 取个名字,value 对应的reducer 函数
     user: userReducer,
     singer: singerReducer,
-    recommend: recommendReducer
+    recommend: recommendReducer,
+    rank: rankReducer,
+    singers: singersReducer
 });
