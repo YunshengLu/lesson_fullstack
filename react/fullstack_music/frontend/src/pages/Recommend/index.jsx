@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { getBannerRequest } from '@/api/request'
+import { getBannerList } from '@/store/actionCreators'
 
 function Recommend(props) {
+
+    const { banners, getBannerDataDispatch } = props
+
+    useEffect(() =>{
+        getBannerDataDispatch()
+    },[])
+
     return (
         <div>
             Recommend
@@ -16,4 +25,12 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Recommend)
+const mapDispatchToProps = (dispatch) => {
+    return{
+        getBannerDataDispatch(){
+            dispatch(getBannerList())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recommend)
