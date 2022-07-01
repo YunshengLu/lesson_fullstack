@@ -1,20 +1,9 @@
-// 不做具体的状态,负责分配工作
-import { combineReducers } from 'redux';
-// 一个redecer 文件 放一类数据
-import userReducer from './user';
-// 每个reducer 文件负责返回一个函数
-// 固定的返回 页面需要的状态数据
-// 页面不再管理数据
-import singerReducer from './singer'
-import recommendReducer from './recommend'
-import rankReducer from './rank'
-import singersReducer from './singers'
-// combineReducers 接受对象配置
+// 模块化能力 路由模块基本就是数据模块
+import { combineReducers } from "redux";
+// store 中央
+// reducer 地方
+import { reducer as recommendReducer } from "@/pages/Recommend/store/index";
+
 export default combineReducers({
-    // key 取个名字,value 对应的reducer 函数
-    user: userReducer,
-    singer: singerReducer,
-    recommend: recommendReducer,
-    rank: rankReducer,
-    singers: singersReducer
-});
+    recommend: recommendReducer
+})
