@@ -79,3 +79,29 @@
         - dispatch({type: '',data: }) 在action 里
         - reducer 根据 type 重新计算     
         - 状态发生改变，应用了状态的地方MVVM
+
+- 小型项目没必要用redux        
+    如果你在想要不要用redux，那就不要用           
+    - 如果足够复杂，模块化reducer 迁移到pages 相应模块下          
+        pages/store 新的目录架构
+    - store 中央 src/store + 模块化 @pages/store{n}
+
+- 修改状态有固定流程      
+    - 属于actionCreators            
+    - 一般标配两个action ，一个同步的，一个异步的        
+    - dispatch 从能触发          
+    - action 对象固定格式 {type: }       
+    - type 方便我们把action 为什么要改变记录下来          
+    - 从init -> 任何 action 状态，都是可被追溯的               
+    - 都是为了数据管理的严谨性
+
+- styled-components        
+    - 页面播放歌曲动态高度，props 传参          
+        ${ 函数 } 函数的返回值就是这个占位          
+        页面的播放状态         
+
+- 移动端一般必须 better-scroll 生成的 scroll 组件        
+    1. 滚动体验更好           
+    2. 下拉刷新，上拉加载更多           
+    3. 使用神三元封装的Scroll 组件          
+    4. 移动端加载更多的标配         
