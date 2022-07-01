@@ -1,20 +1,23 @@
-// 初始化仓库
-// compose
-import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import reducer from './reducer';
-// 激活redux devtool
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// store 物流仓库 数据状态仓库
-// 1. 上京东的官网，或App  UI组件开发   会了
-// 2. 后端提供接口
-// 3. 仓库
+// 1. 管理数据 createStore
+// 2. 模块化管理数据 多个reducer
+// 3. 修改数据？
+// dispatch({action:})
+// 重新计算reducer
 
-// 实例化一个仓库
-// reducer? Array.reduce 名词
-// 第二个参数
-const store = createStore(reducer, composeEnhancers(
-    applyMiddleware(thunk)
-));
+import { createStore, compose, applyMiddleware } from 'redux';
+// 组件 中间件redux-thunk 数据
+import thunk from 'redux-thunk'; // 异步数据管理
+import reducer from './reducer';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducer,
+    // 组合函数
+    // devtool
+    composeEnhancers(
+        // 异步
+        applyMiddleware(thunk)
+    )
+    )
 
 export default store;
