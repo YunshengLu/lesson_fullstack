@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getSingersList } from '@/store/actionCreators'
 
 function Singers(props) {
 
-  const { singersList, getSingersListDispatch } = props
+  const {  } = props
 
   useEffect(() =>{
-    getSingersListDispatch()
+
   },[])
 
   return (
@@ -19,15 +18,13 @@ function Singers(props) {
 
 const mapStateToProps = (state) =>{
   return{
-    singersList: state.singers.singersList
+
   }
 }
 
 const mapDispatchToProps = (dispatch) =>{
   return{
-    getSingersListDispatch(){
-      dispatch(getSingersList())
-    }
+
   }
 }
 

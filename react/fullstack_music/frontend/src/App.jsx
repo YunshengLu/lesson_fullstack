@@ -6,7 +6,7 @@ import { useNavigate, NavLink } from 'react-router-dom'
 import RouterConfig from './routes'
 // 子组件
 function App(props) {
-  console.log(props,'------------');
+  // console.log(props,'------------');
   let { users, singers } = props
   // 有了redux 后,页面组件不再做数据管理
 
@@ -61,12 +61,5 @@ function App(props) {
 // 把store 中的状态以 props 的形式引到组件中
 // state 由redux 给我们的,状态树
 // 以树来组织数据分仓 树根
-const mapStateToProps = (state) =>{
-  return {
-    // 首页想要展示singer数据
-    singers: state.singer.singers,
-    users: state.user.users
-  }
-}
 
-export default connect(mapStateToProps)(App)
+export default App
