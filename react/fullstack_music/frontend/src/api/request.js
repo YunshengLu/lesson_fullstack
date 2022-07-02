@@ -8,3 +8,6 @@ export const getRankListRequest =
 
 export const getSingersRequest = 
     () => axiosInstance.get('/top/artists')
+
+export const getRecommendListRequest =
+    () => axiosInstance.get('/personalized')
