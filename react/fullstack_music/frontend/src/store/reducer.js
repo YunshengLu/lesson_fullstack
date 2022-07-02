@@ -3,7 +3,9 @@ import { combineReducers } from "redux";
 // store 中央
 // reducer 地方
 import { reducer as recommendReducer } from "@/pages/Recommend/store/index";
+import { reducer as playerReducer } from '@/pages/Player/store/index';
 
 export default combineReducers({
-    recommend: recommendReducer
+    recommend: recommendReducer,
+    player: playerReducer
 })
