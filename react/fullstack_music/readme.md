@@ -246,3 +246,24 @@
             input value 是可以被父组件管理的，newQuery        
             useEffect(,[newQuery]) input value 的设置，redux newQuery 发生改变，重新的运行           
     5. useMemo 好高级         
+
+- styled-components 2.0阶段         
+    1. 接受props 的 并在css 中动态输出             
+        和行内样式一样的效果           
+    2. 是否要构建多个样式组件        
+        styled-components 支持嵌套的          
+        如果样式有复用的需要         
+        List ListItem          
+    3. 当有了css 不具备的变量、嵌套模块化、等功能            
+        当styled-components 方便复用              
+        多写样式组件，少写UI 组件了 大部分的UI 组件业务简单         
+    4. 项目风格主题 文件可以参考三元的global-style          
+
+- 热搜 hotkey 绝对定位         
+    show 切换 不会影响正常文档流           
+
+- 搜索 对歌手 专辑 歌 都提供列表模糊查询         
+    1. 接口数据         
+        - 接口文档 /search/suggest?keywords=${query}          
+    2. 推荐          
+    3. 页面级别组件 比较长，JSX 的函数模块化            
