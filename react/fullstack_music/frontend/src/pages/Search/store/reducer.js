@@ -14,7 +14,7 @@ export default (state = defaultState,action) => {
                 ...state,
                 hotList: action.data
             }
-        case actionTypes.SET_SUGGEUST_LIST:
+        case actionTypes.SET_SUGGEST_LIST:
             return {
                 ...state,
                 suggestList: action.data

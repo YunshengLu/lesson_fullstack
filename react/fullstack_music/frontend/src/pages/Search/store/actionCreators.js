@@ -11,7 +11,7 @@ const changeHotKeywords = (data) => ({
 })
 
 const changeSuggestList = (data) => ({
-    type: actionTypes.SET_SUGGEUST_LIST,
+    type: actionTypes.SET_SUGGEST_LIST,
     data
 })
 
@@ -31,6 +31,25 @@ export const getHotKeywords = () => {
             .then((data) => {
                 let list = data.result.hots
                 dispatch(changeHotKeywords(list))
+            })
+    }
+}
+
+export const getSuggestList = (query) => {
+    return (dispatch) => {
+        getSuggestListRequest(query)
+            .then((data) => {
+                if(!data) return;
+                let res = data.result || []
+                dispatch(changeSuggestList(res))
+            })
+
+        getResultSongsListRequest(query) 
+            .then((data) => {
+                if(!data) return;
+                let res = data.result.songs || []
+                dispatch(changeResultSongs(res))
+                dispatch(changeEnterLoading(false))
             })
     }
 }

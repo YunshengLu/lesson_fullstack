@@ -5,15 +5,28 @@ import { connect } from 'react-redux'
 // useCallback 性能优化
 import { 
     getHotKeywords,
-    changeEnterLoading
+    changeEnterLoading,
+    getSuggestList
 } from './store/actionCreators'
 import { CSSTransition } from 'react-transition-group'
 import { 
     Container, 
+    ShortcutWrapper,
+    HotKey
 } from './style'
 import SearchBox from '@/components/common/search-box'
 import Loading from '@/components/common/loading'
-import { EnterLoading } from './../Singers/style'
+import { 
+    EnterLoading, 
+    List,
+    ListItem
+} from '@/pages/Singers/style'
+import Scroll from '@/components/common/scroll/index'
+import LazyLoad, { forceCheck } from 'react-lazyload'
+import singerImg from './singer.png'
+import musicImg from './music.png'
+import { getName } from '@/api/utils'
+import { SongItem } from '../Album/style'
 
 const Search = (props) => {
 
@@ -21,11 +34,14 @@ const Search = (props) => {
     const { 
         hotList, 
         songsCount,
-        enterLoading
+        enterLoading,
+        suggestList,
+        songsList
         } = props
     const { 
         getHotKeywordsDispatch, 
-        changeEnterLoadingDispatch 
+        changeEnterLoadingDispatch ,
+        getSuggestListDispatch
     } = props
 
     // 搜索内容 redux 解决共享状态问题
@@ -54,8 +70,120 @@ const Search = (props) => {
         if(query.trim()){
             // 有必要去请求
             changeEnterLoadingDispatch(true)
+            getSuggestListDispatch(query)
         }
     },[query])
+
+    const renderHotKey = () => {
+        let list = hotList ? hotList : [];
+        return (
+            <ul>
+                {
+                    list.map(item => {
+                        return(
+                            <li className="item" 
+                                key={item.first}
+                                onClick={() => setQuery(item.first)}
+                            >
+                                <span>{item.first}</span>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        )
+    }
+
+    const gotoSingers = (id) => {
+        navigate(`/singers/${id}`)
+    }
+    const gotoAlbum = (id) => {
+        navigate(`/album/${id}`)
+    }
+
+    const renderSingers = () => {
+        let singers = suggestList.artists;
+        if(!singers || !singers.length) return;
+        // console.log(singers);
+        return (
+            <List>
+                <h1 className="title">相关歌手</h1>
+                {
+                    singers.map((item, index) =>{
+                        return (
+                            <ListItem 
+                                key={item.accountId+""+index}
+                                onClick={() => gotoSingers(item.id)}
+                            >
+                                <div className="img_wrapper">
+                                    <LazyLoad placeholder={
+                                        <img width="100%" height="100%"
+                                        src={singerImg}/>
+                                    }>
+                                        <img src={item.picUrl} alt="music" width="100%" height="100%" />
+                                    </LazyLoad>
+                                </div>
+                                <span className="name">歌手: {item.name}</span>
+                            </ListItem>
+                        )
+                    })
+                }
+            </List>
+        )
+    }
+
+    const renderAlbum = () => {
+        let albums = suggestList.playlists
+        if(!albums || !albums.length) return;
+        return (
+            <List>
+                <h1 className="title">相关歌单</h1>
+                {
+                    albums.map((item, index) => {
+                        return (
+                            <ListItem 
+                                key={item.accountId+""+index}
+                                onClick={() => gotoAlbum(item.id)}
+                            >
+                                <div className="img_wrapper">
+                                    <LazyLoad placeholder={<img width="100%" height="100%" 
+                                        src={musicImg} alt="music"/>}
+                                    >
+                                        <img src={item.coverImgUrl}
+                                            width="100%" height="100%" 
+                                            alt="" />
+                                    </LazyLoad>
+                                </div>
+                                <span className="name">歌单:{item.name}</span>
+                            </ListItem>
+                        )
+                    })
+                }
+            </List>
+        )
+    }
+
+    const renderSongs = () => {
+
+        return (
+            <SongItem style={{paddingLeft: "1rem"}}>
+                {
+                    songsList.map(item => {
+                        return (
+                            <li key={item.id}>
+                                <div className="info">
+                                    <span>{item.name}</span>
+                                    <span>
+                                        {getName(item.artists)} - {item.album.name}
+                                    </span>
+                                </div>
+                            </li>
+                        )
+                    })
+                }
+            </SongItem>
+        )
+    }
 
     return (
         // 当dom ready 组件挂载上去，应用css transition 效果
@@ -79,6 +207,25 @@ const Search = (props) => {
                     >    
                     </SearchBox>
                 </div>
+                <ShortcutWrapper show={!query}>
+                    <Scroll>
+                        <div>
+                            <HotKey>
+                                <h1 className='title'>热门搜索</h1>
+                                {renderHotKey()}
+                            </HotKey>
+                        </div>
+                    </Scroll>
+                </ShortcutWrapper>
+                <ShortcutWrapper show={query}>
+                    <Scroll onScroll={forceCheck}>
+                        <div>
+                            {renderSingers()}
+                            {renderAlbum()}
+                            {renderSongs()}
+                        </div>
+                    </Scroll>
+                </ShortcutWrapper>
                 { enterLoading && <EnterLoading><Loading></Loading></EnterLoading> }
             </Container>
         </CSSTransition>
@@ -106,9 +253,9 @@ const mapDispatchToProps = (dispatch) => {
         changeEnterLoadingDispatch(data){
             dispatch(changeEnterLoading(data))
         },
-        // getSuggestListDispatch(){
-        //     dispatch(getSuggestList())
-        // },
+        getSuggestListDispatch(data){
+            dispatch(getSuggestList(data))
+        },
     }
 }
 
