@@ -13,6 +13,7 @@ specifiers:
   react-lazyload: ^3.2.0
   react-redux: ^8.0.2
   react-router: ^6.3.0
+  react-router-config: ^5.1.1
   react-router-dom: ^6.3.0
   react-transition-group: 4.2.1
   redux: ^4.2.0
@@ -31,6 +32,7 @@ dependencies:
   react-lazyload: 3.2.0_biqbaboplfbrettd7655fr4n2y
   react-redux: 8.0.2_rxpulxqxsibgdk5rs4llgxl6gy
   react-router: 6.3.0_react@18.2.0
+  react-router-config: 5.1.1_77xmmbgo3eovj6t3xv35v52s6m
   react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
   react-transition-group: 4.2.1_biqbaboplfbrettd7655fr4n2y
   redux: 4.2.0
@@ -1120,6 +1122,17 @@ packages:
     resolution: {integrity: sha512-XP8A9BT0CpRBD+NYLLeIhld/RqG9+gktUjW1FkE+Vm7OCinbG1SshcK5tb9ls4kzvjZr9mOQc7HYgBngEyPAXg==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /react-router-config/5.1.1_77xmmbgo3eovj6t3xv35v52s6m:
+    resolution: {integrity: sha512-DuanZjaD8mQp1ppHjgnnUnyOlqYXZVjnov/JzFhjLEwd3Z4dYjMSnqrEzzGThH47vpCOqPPwJM2FtthLeJ8Pbg==}
+    peerDependencies:
+      react: '>=15'
+      react-router: '>=5'
+    dependencies:
+      '@babel/runtime': 7.18.6
+      react: 18.2.0
+      react-router: 6.3.0_react@18.2.0
+    dev: false
 
   /react-router-dom/6.3.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw==}
