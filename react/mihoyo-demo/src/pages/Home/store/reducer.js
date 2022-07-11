@@ -2,6 +2,7 @@ import * as actionTypes from './constants';
 
 const defaultState = {
     gameList: [],
+    activityList: [],
 }
 
 export default (state = defaultState, action) => {
@@ -10,6 +11,11 @@ export default (state = defaultState, action) => {
             return {
                 ...state,
                 gameList: action.data
+            }
+        case actionTypes.SET_ACTIVITY_LIST:
+            return {
+                ...state,
+                activityList: action.data
             }
         default:
             return state

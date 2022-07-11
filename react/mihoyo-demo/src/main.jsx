@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { GlobalStyle } from './style'
 import store from './store'
 import 'swiper/dist/css/swiper.css'
+import '@/assets/iconfont/iconfont.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

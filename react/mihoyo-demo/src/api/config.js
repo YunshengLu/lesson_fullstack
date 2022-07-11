@@ -1,6 +1,7 @@
 // 配置请求对象
 import axios from 'axios';
-export const baseUrl = 'https://www.fastmock.site/mock/34068528d0ab010ea734437c0825fdc0/mihoyo/';
+// export const baseUrl = 'https://bbs-api.mihoyo.com';
+export const baseUrl = 'https://www.fastmock.site/mock/34068528d0ab010ea734437c0825fdc0/mihoyo';
 const axiosInstance = axios.create({
     baseURL: baseUrl,
     timeout: 1000,
