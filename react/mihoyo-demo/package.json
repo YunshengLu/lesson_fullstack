@@ -7,16 +7,9 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "proxy": {
-    "/api": {
-      "target": "https://bbs-api.mihoyo.com",
-      "changeOrigin": true,
-      "pathRewrite": {
-        "^/api": ""
-      }
-    }
-  },
   "dependencies": {
+    "antd-mobile": "^5.18.0",
+    "antd-mobile-icons": "^0.3.0",
     "axios": "^0.27.2",
     "better-scroll": "^2.0.0-beta.4",
     "lodash": "^4.17.21",
@@ -31,7 +24,7 @@
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
-    "swiper": "^4.5.1"
+    "swiper": "^5.4.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

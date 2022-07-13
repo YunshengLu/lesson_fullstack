@@ -5,7 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { GlobalStyle } from './style'
 import store from './store'
-import 'swiper/dist/css/swiper.css'
+import 'swiper/css/swiper.css'
+// import 'swiper/css'
 import '@/assets/iconfont/iconfont.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

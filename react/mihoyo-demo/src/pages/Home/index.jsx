@@ -5,7 +5,7 @@ import {
     getGameList,
     getActivityList,
 } from './store/actionCreators'
-import HomeDetailNav from '../../components/HomeDetailNav'
+import HomeDetailNav from '@/components/HomeDetailNav'
 import {} from './style'
 
 const Home = (props) => {
@@ -22,7 +22,7 @@ const Home = (props) => {
 
     useEffect(() => {
         getGameListDispatch();
-        getActivityListDispatch();
+        getActivityListDispatch(2);
     },[])
     
     return (
@@ -33,7 +33,6 @@ const Home = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state,'||||||||');
     return {
         gameList: state.home.gameList,
         activityList: state.home.activityList,

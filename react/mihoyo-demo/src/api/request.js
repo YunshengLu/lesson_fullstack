@@ -6,6 +6,10 @@ export const getGameListRequest =
     () => axiosInstance.get(`/apihub/api/getGameList`)
 
 // 分区信息(活动等)
-// https://bbs-api.mihoyo.com/apihub/api/home/new?gids=1 大别野
+// https://bbs-api.mihoyo.com/apihub/api/home/new?gids=5 大别野
 export const getActivityListRequest =
-    () => axiosInstance.get(`/apihub/api/home/new`)
+    (query) => axiosInstance.get(`/apihub/api/home/new?gids=${query}`)
+    // (query) => axiosInstance.get(`/apihub/api/home/new/gids=${query}`)
+
+export const getResultListRequest =
+    (query) => axiosInstance.get(`/apihub/wapi/search?keyword=${query}`)

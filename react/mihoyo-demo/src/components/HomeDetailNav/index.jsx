@@ -11,29 +11,39 @@ import { selectGame } from '@/api/utils'
 const HomeDetailNav = (props) => {
 
     const { gameList: data } = props
+    // console.log(data);
     
     const navigate = useNavigate()
 
     let swiper = null;
     useEffect(() => {
         if(swiper) return;
-        swiper = new Swiper('.navbar')
+        swiper = new Swiper('.swiper-container',{
+            observer: true,
+            observerParants: true,
+            slidesPerView : 'auto',
+            freeMode: {
+                enabled: true,
+            },
+        })
     },[])
 
     const SelectTop = () => {
         return (
             <SelectItem>
-                <div className="navbar swiper-container">
-                    <div className="nav-box swiper-wrapper">
+                <div className="swiper-container">
+                        <div className="swiper-wrapper">
                 {
                     data.map((item) => {
-                        if(item.has_wiki){
+                        if(item.has_wiki || item.en_name == 'dby'){
                             return(
-                                <NavLink to={`/home/${selectGame(item)}`} key={item.id}>
-                                    <span>
-                                        {item.name}
-                                    </span>
-                                </NavLink>
+                                <div key={item.id} className="swiper-slide">
+                                    <NavLink to={`/home/${selectGame(item)}`}>
+                                        <span>
+                                            {item.name}
+                                        </span>
+                                    </NavLink>
+                                </div>
                             )
                         }
                     })

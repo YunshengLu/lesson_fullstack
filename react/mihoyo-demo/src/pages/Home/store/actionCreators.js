@@ -23,9 +23,9 @@ export const getGameList = () => {
     }
 }
 
-export const getActivityList = () => {
+export const getActivityList = (query) => {
     return (dispatch) => {
-        getActivityListRequest().then(data => {
+        getActivityListRequest(query).then(data => {
             dispatch(changeActivityList(data))
         })
     }

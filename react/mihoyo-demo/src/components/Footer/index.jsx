@@ -1,8 +1,12 @@
-import React from 'react';
-import { Tab, TabItem } from './style'
-import { useNavigate, NavLink } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Tab, TabItem, ContentWrapper } from './style';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { Popup } from 'antd-mobile';
+import { PicturesOutline, MailOpenOutline, TextOutline, CloseOutline } from 'antd-mobile-icons'
 
 function Footer() {
+    const [visible, setVisible] = useState(false);
+
     return (
         <div>
             <Tab>
@@ -18,11 +22,68 @@ function Footer() {
                         <span>动态</span>
                     </TabItem>
                 </NavLink>
-                <TabItem>
-                    <div className="input">
-                        <i className="iconfont icon-kuaisutianjiamoren"></i>
-                    </div>
-                </TabItem>
+
+                <>
+                    <TabItem
+                        onClick={() => {
+                            setVisible(true);
+                        }}
+                    >
+                        <div className="input">
+                            <i className="iconfont icon-kuaisutianjiamoren"></i>
+                        </div>
+                    </TabItem>
+                    <Popup
+                        visible={visible}
+                        onMaskClick={() => {
+                            setVisible(false);
+                        }}
+                        bodyStyle={{
+                            borderTopLeftRadius: '0.5rem',
+                            borderTopRightRadius: '0.5rem',
+                            height: '15rem',
+                        }}
+                    >
+                        <ContentWrapper>
+                            <a href="#">
+                                <div>
+                                    <MailOpenOutline />
+                                </div>
+                                <span>
+                                    帖子
+                                    <p>
+                                        讨论 分析 攻略 同人文
+                                    </p>
+                                </span>
+                            </a>                            
+                            <a href="#">
+                                <div>
+                                    <PicturesOutline />
+                                </div>
+                                <span>
+                                    图片创作
+                                    <p>
+                                        绘画 cos 手工 表情包
+                                    </p>
+                                </span>
+                            </a>                            
+                            <a href="#">
+                                <div>
+                                    <p className="beta">beta</p>
+                                    <TextOutline />
+                                </div>
+                                <span>
+                                    动态
+                                    <p>
+                                        分享你的新鲜事
+                                    </p>
+                                </span>
+                            </a>
+                            <CloseOutline className="close" onClick={() => setVisible(false)} />
+                        </ContentWrapper>
+                    </Popup>
+                </>
+
                 <NavLink to="/information">
                     <TabItem>
                         <i className="iconfont icon-xiaoxi"></i>
