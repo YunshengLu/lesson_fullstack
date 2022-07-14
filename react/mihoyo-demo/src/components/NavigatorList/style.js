@@ -56,7 +56,7 @@ export const ItemWrapper = styled.div`
             text-align: center;
             flex-direction: column;
             font-size: 0.6rem;
-            color: black;
+            color: white;
             img {
                 width: 2rem;
                 height: 2rem;

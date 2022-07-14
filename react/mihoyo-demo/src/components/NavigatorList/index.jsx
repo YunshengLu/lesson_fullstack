@@ -4,13 +4,14 @@ import {
 } from './style'
 import Swiper from 'swiper'
 
+/**
+ * 
+ * @param {*} param0 
+ * @returns 活动导航List
+ */
 const NavigatorList = ({navigator}) => {
 
-    let navigatorList = navigator.navigator
-    console.log(navigatorList,'||||||||');
-    // (navigatorList || []).map(item =>{
-    //     console.log(item);
-    // })
+    let navigatorList = navigator
 
     let swiper = null;
     useEffect(() => {
