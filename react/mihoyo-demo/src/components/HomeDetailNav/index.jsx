@@ -8,6 +8,11 @@ import {
 import Swiper from 'swiper'
 import { selectGame } from '@/api/utils'
 
+/**
+ * 
+ * @param {*} props 
+ * @returns Home顶部Tab导航栏
+ */
 const HomeDetailNav = (props) => {
 
     const { gameList: data } = props
@@ -27,6 +32,10 @@ const HomeDetailNav = (props) => {
             },
         })
     },[])
+
+    // useEffect(() => {
+    //     setPathNum(gameId)
+    // },[])
 
     const SelectTop = () => {
         return (

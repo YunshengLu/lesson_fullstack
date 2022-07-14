@@ -18,6 +18,7 @@ export const Top = styled.div`
         .icon-sousuo {
             font-size: 1rem;
             font-weight: bold;
+            color: white;
         }
     }
     .right {
@@ -30,7 +31,8 @@ export const Top = styled.div`
         right: 0;
         .icon-caidanzhankai {
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 500;
+            color: white;
         }
     }
 `;
@@ -48,13 +50,18 @@ export const SelectItem = styled.div`
             height: 2rem;
             width: auto;
             margin: auto 0.6rem;
+            color: #707070;
+            &.active {
+                font-weight: 500;
+                font-size: 1rem;
+                color: white;
+            }
         }
         span {
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.9rem;
-            color: #707070;
         }
     }
 `;
