@@ -2,7 +2,8 @@ import * as actionTypes from './constants';
 
 const defaultState = {
     gameList: [],
-    activityList: [],
+    activityBackground: [],
+    backgroundList: [],
 }
 
 export default (state = defaultState, action) => {
@@ -12,10 +13,10 @@ export default (state = defaultState, action) => {
                 ...state,
                 gameList: action.data
             }
-        case actionTypes.SET_ACTIVITY_LIST:
+        case actionTypes.GET_BACKGROUND_LIST:
             return {
                 ...state,
-                activityList: action.data
+                backgroundList: action.data
             }
         default:
             return state

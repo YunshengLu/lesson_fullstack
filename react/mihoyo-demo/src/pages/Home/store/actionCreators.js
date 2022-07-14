@@ -4,16 +4,11 @@ import {
     getActivityListRequest,
 } from '@/api/request'
 
+// 
 const changeGameList = (data) => ({
     type: actionTypes.SET_GAME_LIST,
     data
 })
-
-const changeActivityList = (data) => ({
-    type: actionTypes.SET_ACTIVITY_LIST,
-    data
-})
-
 export const getGameList = () => {
     return (dispatch) =>{
         getGameListRequest().then(data => {
@@ -23,10 +18,16 @@ export const getGameList = () => {
     }
 }
 
-export const getActivityList = (query) => {
+// 
+const getBackgroundList = (data) => ({
+    type: actionTypes.GET_BACKGROUND_LIST,
+    data
+})
+export const getBackground = (query) => {
     return (dispatch) => {
         getActivityListRequest(query).then(data => {
-            dispatch(changeActivityList(data))
+            let list = data.data.background
+            dispatch(getBackgroundList(list))
         })
     }
 }

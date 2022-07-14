@@ -1,41 +1,58 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, NavLink } from 'react-router-dom'
+import { useNavigate, NavLink, useLocation } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
     getGameList,
-    getActivityList,
+    getBackground,
 } from './store/actionCreators'
 import HomeDetailNav from '@/components/HomeDetailNav'
-import {} from './style'
+import { SplitPath } from '@/api/utils'
+import { Wrapper } from './style'
 
 const Home = (props) => {
 
+    // const [pathNum,setPathNum] = useState(2)
+    const { pathname } = useLocation();
+    let gameId = SplitPath(pathname) 
+    // setPathNum(gameId)
+
     const {
         gameList,
-        activityList,
+        backgroundList,
     } = props
 
     const {
         getGameListDispatch,
-        getActivityListDispatch,
+        getBackgroundListDispatch,
     } = props
 
     useEffect(() => {
         getGameListDispatch();
-        getActivityListDispatch(2);
+        // getBackgroundListDispatch(pathNum);
     },[])
+
+    useEffect(() => {
+        getBackgroundListDispatch(gameId);
+    },[gameId])
+    // console.log(gameId);
+    // console.log(backgroundList);
+    let imageUrl = backgroundList.image
+    console.log(imageUrl,'?????????');
     
     return (
-        <div>
-            <HomeDetailNav gameList={gameList}/>
-        </div>
+        <Wrapper imageUrl={imageUrl}>
+            <HomeDetailNav 
+                gameList={gameList} 
+                backgroundList={backgroundList}
+            />
+        </Wrapper>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
         gameList: state.home.gameList,
-        activityList: state.home.activityList,
+        backgroundList: state.home.backgroundList,
     }
 }
 
@@ -44,9 +61,9 @@ const mapDispatchToProps = (dispatch) => {
         getGameListDispatch(){
             dispatch(getGameList())
         },
-        getActivityListDispatch(){
-            dispatch(getActivityList())
-        }
+        getBackgroundListDispatch(data){
+            dispatch(getBackground(data))
+        },
     }
 }
 
