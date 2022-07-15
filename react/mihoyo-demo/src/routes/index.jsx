@@ -12,6 +12,7 @@ const RouterConfig = () => {
         <Suspense fallback={null}>
         <Routes>
             <Route path="/" element={<Navigate to="/home/yuanshen"/>} replace={true} />
+            <Route path="/home" element={<Navigate to="/home/yuanshen"/>} replace={true} />
             <Route path="/dynamic" element={<Dynamic />} />
             <Route path="/information" element={<Information />} />
             <Route path="/mypage" element={<Mypage />} />

@@ -1,29 +1,52 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Tab = styled.div`
-    display: flex;
-    height: 2.7rem;
-    width: 100%;
-    background-color: rgba(248, 248, 248, 1);
-    position: fixed;
-    bottom: 0;
-    justify-content: space-around;
-    z-index: 999;
-    a {
-        flex: 1;
+export const Wrapper = styled.div`
+    position: relative;
+    .suggest {
+        height: 2rem;
+        background: white;
+        border-top: 0.4rem solid rgb(242, 243, 244);
         display: flex;
-        align-items: center;
-        justify-content: space-around;
-        &.active *{
-            color: skyblue;
+        .icon-tuijian {
+            position: absolute;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 0.6rem;
+            margin-left: 0.5rem;
+        }
+        p {
+            position: absolute;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 0.7rem;
+            margin-left: 2rem;
         }
     }
-    .input {
-        width: 3.5rem;
-        margin: auto;
-        transform: scale(1.2, 1);
+`
+
+export const ItemConent = styled.div`
+`
+
+export const Item = styled.div`
+    height: 18rem;
+    background: white;
+    border-bottom: 0.4rem solid rgb(242, 243, 244);
+`
+
+export const SwiperItem = styled.div`
+    height: 8rem;
+    background: rgb(242, 243, 244);
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 0.4rem;
     }
-`;
+    .swiper-slide {
+        margin: 0.75rem 0 0.75rem 0.5rem;
+        width: 14rem;
+        height: 6.5rem;
+    }
+`
 
 export const TabItem = styled.div`
     height: 100%;
@@ -50,28 +73,24 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 4rem;
-    margin-top: 1.5rem;
     a {
         display: inline-block;
         display: flex;
         align-items: center;
-        height: 3.5rem;
-        width: 80%;
+        height: 1.8rem;
+        margin-top: 0.5rem;
+        width: 100%;
         > div {
             height: 2.5rem;
             width: 2.5rem;
-            background: rgb(233, 243, 255);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: rgb(25, 163, 254);
+            font-size: 1rem;
+            color: black;
         }
         span {
             color: rgb(30, 31, 33);
-            margin-left: 0.7rem;
             font-size: 0.7rem;
             > p {
                 color: rgb(192, 197, 200);
@@ -94,7 +113,15 @@ export const ContentWrapper = styled.div`
         }
     }
     .close {
-        color: rgb(192, 197, 200);
-        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.5rem;
+        width: 100%;
+        background-color: rgba(248, 248, 248, 1);
+        position: fixed;
+        bottom: 0;
+        font-size: 0.8rem;
+        color: black;
     }
 `;

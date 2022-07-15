@@ -4,40 +4,99 @@ import {
     getYuanshenActivityList,
     getYuanshenDiscussion,
     getOfficial,
+    getSuggestPost,
+    getPostStat,
+    getCarousels,
 } from './store/actionCreators'
 import Scroll from '@/components/common/scroll/index'
+import { forceCheck } from 'react-lazyload'
+import { 
+    PullToRefresh,
+    DotLoading,
+    Toast,
+} from 'antd-mobile'
+import { sleep } from 'antd-mobile/es/utils/sleep'
 import NavigatorList from '@/components/NavigatorList'
 import Discuss from '@/components/Discuss'
 import Official from '@/components/Official'
+import SuggestPost from '@/components/SuggestPost'
 import { Wrapper } from './style'
 
 const Yuanshen = (props) => {
+
+    const [postId,setPostId] = useState([])
 
     const {
         yuanshenActivityList,
         yuanshenDiscussionList,
         officialList,
+        suggestPostList,
+        postStat,
+        carouselsList,
     } = props
 
     const {
         getYuanshenActivityListDispatch,
         getYuanshenDiscussionListDispatch,
         getOfficialListDispatch,
+        getSuggestPostListDispatch,
+        getPostStatListDispatch,
+        getCarouselsListDispatch,
     } = props
+
+    const getPostID = () => {
+        suggestPostList.forEach(item => {
+            let id = +item.post.post_id
+            setPostId([
+                ...postId,
+                id
+            ])
+        })
+    }
 
     useEffect(() => {
         getYuanshenActivityListDispatch(2);
         getYuanshenDiscussionListDispatch(2);
         getOfficialListDispatch(2);
+        getSuggestPostListDispatch(2);
+        getCarouselsListDispatch(2);
     },[])
+
+    // useEffect(() => {
+    //     getPostID()
+    //     getPostStatListDispatch(2,postId)
+    // },[])
+
+    // console.log(postId,'@@@@@@@@@@@@@@@@');
+    
+    async function doRefresh() {
+        await sleep(1000);
+        getOfficialListDispatch(2);
+        getCarouselsListDispatch(2);
+        getSuggestPostListDispatch(2);
+        Toast.show({
+            content: '推荐已更新'
+        })
+    }
 
     return (
         <div>
-            <Scroll>
+            <PullToRefresh
+                onRefresh={doRefresh}
+                refreshingText={<DotLoading color='#2df4fe'/>}
+                completeText={ <h3>&nbsp;&nbsp;</h3>}
+            >
+            {/* <Scroll> */}
                 <NavigatorList navigator={yuanshenActivityList}/>
                 <Discuss discussion={yuanshenDiscussionList}/>
                 <Official officialList={officialList}/>
-            </Scroll>
+                <SuggestPost 
+                    suggestPostList={suggestPostList}
+                    postStat={postStat}
+                    carouselsList={carouselsList}
+                />
+            {/* </Scroll> */}
+            </PullToRefresh>
         </div>
     )
 }
@@ -47,6 +106,9 @@ const mapStateToProps = (state) => {
         yuanshenActivityList: state.yuanshen.yuanshenActivityList,
         yuanshenDiscussionList: state.yuanshen.yuanshenDiscussionList,
         officialList: state.yuanshen.officialList,
+        suggestPostList: state.yuanshen.suggestPostList,
+        postStat: state.yuanshen.postStat,
+        carouselsList: state.yuanshen.carouselsList,
     }
 }
 
@@ -61,6 +123,18 @@ const mapDispatchToProps = (dispatch) =>{
         getOfficialListDispatch(data){
             dispatch(getOfficial(data))
         },
+        getBackgroundListDispatch(data){
+            dispatch(getBackground(data))
+        },
+        getSuggestPostListDispatch(data){
+            dispatch(getSuggestPost(data))
+        },
+        getPostStatListDispatch(query,arr){
+            dispatch(getPostStat(query,arr))
+        },
+        getCarouselsListDispatch(query) {
+            dispatch(getCarousels(query))
+        }
     }
 }
 

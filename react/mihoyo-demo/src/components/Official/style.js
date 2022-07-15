@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     background: white;
     border-radius: 0.4rem 0.4rem 0 0;
     height: 10.4rem;
+    border-bottom: 1px solid white;
     a {
         display: inline-block;
         display: flex;
@@ -31,7 +32,7 @@ export const Wrapper = styled.div`
         }
         .all {
             font-size: 0.6rem;
-            margin-right: -16rem;
+            margin-right: -14.5rem;
             opacity: 0.6;
             .icon-xiangyou {
                 position: absolute;
@@ -65,7 +66,7 @@ export const Item = styled.div`
             /* background: pink; */
         }
         .footer {
-            display: flex;
+            position: relative;
             .label {
                 display: flex;
                 align-items: center;
@@ -79,11 +80,11 @@ export const Item = styled.div`
                 background: rgb(189,165,117);
             }
             .date {
-                position: absolute;
+                text-align: right;
                 opacity: 0.5;
                 font-size: 0.6rem;
-                margin-left: 14.8rem;
-                margin-top: 0.6rem;
+                margin-top: -0.8rem;
+                margin-right: .6rem;
             }
         }
     }
