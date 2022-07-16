@@ -1,0 +1,15 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "- 石头 rock  剪刀 scissor  布 paper\r - 怎么玩？        \r     选择协议？ http 网页游戏 4399？ 服务器端是不可以主动发送数据        \r     双方都可以相互通信，发送接收信息 TCP/IP 连接 ws websocket       \r - 电脑来玩 应用层         \r     冯诺依曼原理            \r     1. 输入设备 键盘 鼠标  你的选择  交给电脑\r     2. 内存 userChoice  rock          \r         电脑 Math.random()  comChoice page          \r     3. cpu  内存中 调入 cpu 计算， 得到结果 computer 赢了       \r     4. 输出设备(显示器) computer 赢了",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
