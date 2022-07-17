@@ -114,20 +114,20 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
     return {
-        getYuanshenActivityListDispatch(data){
-            dispatch(getYuanshenActivityList(data))
+        getYuanshenActivityListDispatch(query){
+            dispatch(getYuanshenActivityList(query))
         },
-        getYuanshenDiscussionListDispatch(data){
-            dispatch(getYuanshenDiscussion(data))
+        getYuanshenDiscussionListDispatch(query){
+            dispatch(getYuanshenDiscussion(query))
         },
-        getOfficialListDispatch(data){
-            dispatch(getOfficial(data))
+        getOfficialListDispatch(query){
+            dispatch(getOfficial(query))
         },
-        getBackgroundListDispatch(data){
-            dispatch(getBackground(data))
+        getBackgroundListDispatch(query){
+            dispatch(getBackground(query))
         },
-        getSuggestPostListDispatch(data){
-            dispatch(getSuggestPost(data))
+        getSuggestPostListDispatch(query){
+            dispatch(getSuggestPost(query))
         },
         getPostStatListDispatch(query,arr){
             dispatch(getPostStat(query,arr))

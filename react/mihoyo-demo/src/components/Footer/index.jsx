@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Tab, TabItem, ContentWrapper } from './style';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 import { Popup } from 'antd-mobile';
 import { PicturesOutline, MailOpenOutline, TextOutline, CloseOutline } from 'antd-mobile-icons'
 
 function Footer() {
     const [visible, setVisible] = useState(false);
+    const { pathname } = useLocation();
+    let pathRes = pathname.split("/")
+    let pathName = pathRes[1];
 
     return (
         <div>
-            <Tab>
+            <Tab pathHome={pathName == 'home'}>
                 <NavLink to="/home">
                     <TabItem>
                         <i className="iconfont icon-shouyecopy"></i>

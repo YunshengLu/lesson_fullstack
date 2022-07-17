@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Tab = styled.div`
-    display: flex;
+    display: ${props => (props.pathHome ? 'flex' : 'none')};
     height: 2.7rem;
     width: 100%;
     background-color: rgba(248, 248, 248, 1);

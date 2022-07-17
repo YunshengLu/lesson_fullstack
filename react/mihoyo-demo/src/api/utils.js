@@ -14,6 +14,7 @@ const debounce = (func, delay) => {
 
 // 根据id 返回路径
 const selectGame = (item) => {
+    item = {...item}
     switch (item.id) {
         case 1:
             return "benghuai3"

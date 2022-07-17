@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate, NavLink, Outlet } from 'react-router-dom'
 import {
     Wrapper,
@@ -7,6 +7,8 @@ import {
 } from './style'
 import Swiper from 'swiper'
 import { selectGame } from '@/api/utils'
+import { useScroll } from 'ahooks'
+import classnames from "classnames"
 
 /**
  * 
@@ -19,6 +21,12 @@ const HomeDetailNav = (props) => {
     // console.log(data);
     
     const navigate = useNavigate()
+
+    const [searchHidden, setSearchHidden] = useState(false);
+    const [height, setHeight] = useState(0);
+    const searchRef = useRef(null)
+    const scroll = useScroll()
+    // console.log(scroll);
 
     let swiper = null;
     useEffect(() => {
@@ -33,13 +41,38 @@ const HomeDetailNav = (props) => {
         })
     },[])
 
-    // useEffect(() => {
-    //     setPathNum(gameId)
-    // },[])
+    useEffect(() => {
+        setTimeout(() => {
+            setHeight(searchRef?.current?.getBoundingClientRect().top)// 设置元素距离顶部的高度
+        }, 0);
+    }, [])
+
+    // 监听屏幕滚动，超出顶部，组件吸顶
+    useEffect(() => {
+        if(scroll && scroll.top > 0){
+            if(!searchHidden && searchRef.current){
+                setSearchHidden(true);
+                searchRef.current.style.position = 'fixed'
+                searchRef.current.style.backgroundColor ='white'
+                searchRef.current.style.zIndex = '9999'
+                searchRef.current.style.opacity = '0.5'
+            }
+        }else {
+            if(searchHidden && searchRef.current){
+                searchRef.current.style = ''
+                setSearchHidden(false);
+            }
+        }
+
+        if(scroll && scroll.top > 100){
+            searchRef.current.style.backgroundColor ='rgb(242, 243, 244)'
+            searchRef.current.style.opacity = '1'
+        }
+    }, [JSON.stringify(scroll)])
 
     const SelectTop = () => {
         return (
-            <SelectItem>
+            <SelectItem searchHidden={searchHidden}>
                 <div className="swiper-container">
                         <div className="swiper-wrapper">
                 {
@@ -65,12 +98,12 @@ const HomeDetailNav = (props) => {
 
     return (
         <Wrapper>
-            <Top>
-                <span className='left'>
+            <Top ref={searchRef}>
+                <span className={classnames('left',{top_color: searchHidden})}>
                     <i className="iconfont icon-sousuo" onClick={() => navigate("/search")}></i>
                 </span>
                 {SelectTop()}
-                <span className='right'>
+                <span className={classnames('right',{top_color: searchHidden})}>
                     <i className="iconfont icon-caidanzhankai" onClick={() => navigate("/select")}></i>
                 </span>
             </Top>

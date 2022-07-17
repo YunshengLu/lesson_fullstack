@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DiscussWrapper = styled.div`
     /* background: pink; */
     width: 100%;
-    height: 4rem;
+    height: ${props => (props.searchHidden ? '2rem' : '4rem')};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,22 +13,22 @@ export const DiscussWrapper = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 90%;
-        height: 3rem;
+        width: ${props => (props.searchHidden ? '100%' : '90%')};
+        height: ${props => (props.searchHidden ? '2rem' : '3rem')};
         color: black;
         background: white;
         border: 1px solid rgba(0,0,0,0.05);
-        border-radius: 8px;
+        border-radius: ${props => (props.searchHidden ? '0' : '8px')};
         img {
             position: absolute;
-            height: 1.5rem;
-            width: 1.5rem;
-            margin-left: -14rem;
+            height: ${props => (props.searchHidden ? '1.3rem' : '1.5rem')};
+            width: ${props => (props.searchHidden ? '1.3rem' : '1.5rem')};
+            margin-left: ${props => (props.searchHidden ? '-16rem' : '-14rem')};
         }
         >p {
             position: absolute;
             font-size: 0.6rem;
-            margin-right: -12.5rem;
+            margin-right: ${props => (props.searchHidden ? '-14rem' : '-12.5rem')};
         }
     }
 
@@ -61,5 +61,6 @@ export const Content = styled.div`
     >span {
         color: rgb(204,208,209);
         font-size: 8px;
+        margin-left: ${props => (props.searchHidden ? '-1.8rem' : '0')};
     }
 `

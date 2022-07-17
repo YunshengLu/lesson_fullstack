@@ -35,6 +35,14 @@ export const Top = styled.div`
             color: white;
         }
     }
+    .top_color {
+        .icon-caidanzhankai{
+            color: black;
+        }
+        .icon-sousuo{
+            color: black;
+        }
+    }
 `;
 
 export const SelectItem = styled.div`
@@ -54,7 +62,8 @@ export const SelectItem = styled.div`
             &.active {
                 font-weight: 500;
                 font-size: 1rem;
-                color: white;
+                color: ${props => (props.searchHidden ? 'black' : 'white')};
+                /* color: white; */
             }
         }
         span {

@@ -4,7 +4,7 @@ export const baseUrl = 'http://localhost:3000';
 // export const baseUrl = 'https://www.fastmock.site/mock/34068528d0ab010ea734437c0825fdc0/mihoyo';
 const axiosInstance = axios.create({
     baseURL: baseUrl,
-    timeout: 1000,
+    timeout: 5000,
 });
 
 // 拦截器

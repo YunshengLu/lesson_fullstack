@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import {
     Wrapper,
     ItemConent,
@@ -8,7 +8,9 @@ import {
     ContentWrapper,
 } from "./style"
 import Swiper from "swiper"
-import { Popup } from 'antd-mobile';
+import classnames from "classnames"
+import { getGMT } from '@/api/utils'
+import { Popup } from 'antd-mobile'
 import { 
     MoreOutline,
     ExclamationTriangleOutline, 
@@ -19,12 +21,8 @@ import {
 
 const SuggestPost = ({suggestPostList, carouselsList}) => {
 
-    const [isAttention,setIsAttention] = useState(false)
-    const [guanzhu,setGuanzhu] = useState('+ 关注')
-    const [visible, setVisible] = useState(false);
-
     const frontPost = suggestPostList.slice(0,2)
-    console.log(frontPost);
+    // console.log(frontPost);
     const lastPost = suggestPostList.slice(2)
 
     let swiper = null;
@@ -39,115 +37,6 @@ const SuggestPost = ({suggestPostList, carouselsList}) => {
             },
         })
     },[])
-
-    // 关注按钮事件
-    const attention = () => {
-        if(isAttention){
-            setGuanzhu('已关注')
-        }else{
-            setGuanzhu('+ 关注')
-        }
-        setIsAttention(!isAttention)
-    }
-
-    // 关注旁边的举报等信息弹出层
-    const details = () => {
-        return (
-            <>
-                <TabItem
-                    onClick={() => {
-                        setVisible(true);
-                    }}
-                >
-                    <div className="input">
-                        <MoreOutline />
-                    </div>
-                </TabItem>
-                <Popup
-                    visible={visible}
-                    onMaskClick={() => {
-                        setVisible(false);
-                    }}
-                    bodyStyle={{
-                        borderTopLeftRadius: '0.5rem',
-                        borderTopRightRadius: '0.5rem',
-                        height: '12rem',
-                    }}
-                >
-                    <ContentWrapper>
-                        <a href="#">
-                            <div>
-                                <FileWrongOutline />
-                            </div>
-                            <span>
-                                减少此类内容
-                            </span>
-                        </a>    
-                        <a href="#">
-                            <div>
-                                <ScanningFaceOutline />
-                            </div>
-                            <span>
-                                不看作者
-                            </span>
-                        </a>                            
-                        <a href="#">
-                            <div>
-                                <BankcardOutline />
-                            </div>
-                            <span>
-                                减少{}版区内容
-                            </span>
-                        </a>                            
-                        <a href="#">
-                            <div>
-                                <ExclamationTriangleOutline />
-                            </div>
-                            <span>
-                                举报
-                            </span>
-                        </a>
-                        <div className="close" onClick={() => setVisible(false)}>取消</div>
-                    </ContentWrapper>
-                </Popup>
-            </>
-        )
-    }
-
-    // 首页推荐内容
-    const suggestFrontPostContent = () => {
-        return (
-            <ItemConent>
-                {
-                    frontPost && frontPost.length ?
-                    frontPost.map((item,index) => 
-                        <Item key={index}>
-                            <div className="header">
-                                <img src={item.user.avatar_url}/>
-                                <span>{item.user.nickname}</span>
-                                <p>{item.user.level_exp.level}</p>
-                                {item.post.post_id}
-                                <button 
-                                    className="attention" 
-                                    onClick={() => attention()}
-                                >
-                                    {guanzhu}
-                                </button>
-                                {details()}
-                            </div>
-                            <div className="content">
-
-                            </div>
-                            <div className="footer">
-
-                            </div>
-                        </Item>
-                    )
-                    :null
-                }
-            </ItemConent>
-        )
-    }
 
     const carousels = () => {
         return (
@@ -173,10 +62,145 @@ const SuggestPost = ({suggestPostList, carouselsList}) => {
                 <i className="iconfont icon-tuijian"></i>
                 <p>推荐</p>
             </div>
-            {suggestFrontPostContent()}
+            {
+                frontPost.length > 0 && 
+                    frontPost.map((item,index) =>(
+                        <SuggestPostContent
+                            key={index}
+                            Post={item}
+                        />
+                    ))
+            }
             {carousels()}
+            {
+                lastPost.length > 0 && 
+                lastPost.map((item,index) =>(
+                        <SuggestPostContent
+                            key={index}
+                            Post={item}
+                        />
+                    ))
+            }
         </Wrapper>
     )
 }
+
+// 首页推荐内容
+const SuggestPostContent = ({Post}) => {
+
+    const [guanzhu,setGuanzhu] = useState('+ 关注')
+    const [isAttention,setIsAttention] = useState(false)
+    const [visible, setVisible] = useState(false);
+    // console.log(Post);
+   // 关注按钮事件
+    const attention = () => {
+        if(guanzhu == '+ 关注'){
+            setGuanzhu('已关注')
+        }else{
+            setGuanzhu('+ 关注')
+        }
+        setIsAttention(!isAttention)
+    }
+
+    // 关注旁边的举报等信息弹出层
+    const details = (name) => {
+        return (
+            <>
+                <TabItem
+                    onClick={() => {
+                        setVisible(true);
+                    }}
+                >
+                    <div className="input">
+                        <MoreOutline />
+                    </div>
+                </TabItem>
+                <Popup
+                    visible={visible}
+                    onMaskClick={() => {
+                        setVisible(false);
+                    }}
+                    bodyStyle={{
+                        borderTopLeftRadius: '0.5rem',
+                        borderTopRightRadius: '0.5rem',
+                        height: '12rem',
+                    }}
+                >
+                <ContentWrapper>
+                    <a href="#">
+                        <div>
+                            <FileWrongOutline />
+                        </div>
+                        <span>
+                            减少此类内容
+                        </span>
+                    </a>    
+                    <a href="#">
+                        <div>
+                            <ScanningFaceOutline />
+                        </div>
+                        <span>
+                            不看作者: {name}
+                        </span>
+                    </a>                            
+                    <a href="#">
+                        <div>
+                            <BankcardOutline />
+                        </div>
+                        <span>
+                            减少{}版区内容
+                        </span>
+                    </a>                            
+                    <a href="#">
+                        <div>
+                            <ExclamationTriangleOutline />
+                        </div>
+                        <span>
+                            举报
+                        </span>
+                    </a>
+                    <div className="close" onClick={() => setVisible(false)}>取消</div>
+                </ContentWrapper>
+                </Popup>
+            </>
+        )
+    }
+
+    return (
+        <ItemConent>
+            <Item>
+                <div className="header">
+                    <div className="avatar">
+                        <img className="avatar_url" src={Post.user.avatar_url}/>
+                        <img className={classnames({pendant: Post.user.pendant})} 
+                            src={Post.user.pendant ? Post.user.pendant : null} />
+                    </div>
+                    <div className="user_name">
+                        <div>
+                            <span>{Post.user.nickname}</span>
+                            <p>{Post.user.level_exp.level}</p>
+                        </div>
+                        <span className="post_time">{getGMT(Post.post.created_at)}</span>
+                    </div>
+                    {/* {item.post.post_id} */}
+                    <div 
+                        className={classnames("attention",{is_attention: isAttention})}
+                        onClick={() => attention()}
+                    >
+                        {guanzhu}
+                    </div>
+                    {details(Post.user.nickname)}
+                </div>
+                <div className="content">
+                </div>
+                <div className="footer">
+                </div>
+            </Item>
+        </ItemConent>
+    )
+}
+
+
+
 
 export default SuggestPost

@@ -4,18 +4,23 @@ import Home from '@/pages/Home';
 const Dynamic = lazy(() => import('@/pages/Dynamic'))
 const Information = lazy(() => import('@/pages/Information'))
 const Mypage = lazy(() => import('@/pages/Mypage'))
+const Search = lazy(() => import('@/pages/Search'))
 const Yuanshen = lazy(() => import('@/pages/Home/Yuanshen'))
 const Dabieye = lazy(() => import('@/pages/Home/Dabieye'))
 
-const RouterConfig = () => {
+const RouterConfig = ({gamename}) => {
+    // console.log(gamename,"++++++++++++++++");
     return (
         <Suspense fallback={null}>
         <Routes>
-            <Route path="/" element={<Navigate to="/home/yuanshen"/>} replace={true} />
-            <Route path="/home" element={<Navigate to="/home/yuanshen"/>} replace={true} />
+            {/* <Route path="/" element={<Navigate to="/home/dabieye"/>} replace={true} />
+            <Route path="/home" element={<Navigate to="/home/dabieye"/>} replace={true} /> */}
+            <Route path="/" element={<Navigate to={`/home/${gamename}`}/>} replace={true} />
+            <Route path="/home" element={<Navigate to={`/home/${gamename}`}/>} replace={true} />
             <Route path="/dynamic" element={<Dynamic />} />
             <Route path="/information" element={<Information />} />
             <Route path="/mypage" element={<Mypage />} />
+            <Route path="/search" element={<Search />} />
             <Route path="/home" element={<Home />} >
                 <Route path="/home/yuanshen" element={<Yuanshen/>} />
                 <Route path="/home/dabieye" element={<Dabieye/>} />

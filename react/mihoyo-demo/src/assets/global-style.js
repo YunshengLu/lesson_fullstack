@@ -1,5 +1,5 @@
 export default{
-    "theme-color": "#C20C0C",
+    "theme-color": "rgb(242, 243, 244)",
     "font-color": "#111111",
     "font-size-s": "12px",
     "font-size-ss": "10px",
