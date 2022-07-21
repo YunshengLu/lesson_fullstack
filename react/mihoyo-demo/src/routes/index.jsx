@@ -5,6 +5,7 @@ const Dynamic = lazy(() => import('@/pages/Dynamic'))
 const Information = lazy(() => import('@/pages/Information'))
 const Mypage = lazy(() => import('@/pages/Mypage'))
 const Search = lazy(() => import('@/pages/Search'))
+const SelectChannel = lazy(() => import('@/pages/SelectChannel'))
 const Yuanshen = lazy(() => import('@/pages/Home/Yuanshen'))
 const Dabieye = lazy(() => import('@/pages/Home/Dabieye'))
 
@@ -21,6 +22,7 @@ const RouterConfig = ({gamename}) => {
             <Route path="/information" element={<Information />} />
             <Route path="/mypage" element={<Mypage />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/select" element={<SelectChannel/>} />
             <Route path="/home" element={<Home />} >
                 <Route path="/home/yuanshen" element={<Yuanshen/>} />
                 <Route path="/home/dabieye" element={<Dabieye/>} />

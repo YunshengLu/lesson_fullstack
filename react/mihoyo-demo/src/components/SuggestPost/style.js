@@ -1,11 +1,14 @@
 import styled from 'styled-components';
+import style from '@/assets/global-style';
 
 export const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
     position: relative;
     .suggest {
         height: 2rem;
         background: white;
-        border-top: 0.4rem solid rgb(242, 243, 244);
+        border-bottom: 0.1rem solid white;
         display: flex;
         .icon-tuijian {
             position: absolute;
@@ -24,13 +27,86 @@ export const Wrapper = styled.div`
     }
 `;
 
-export const ItemConent = styled.div``;
+export const ItemConent = styled.div`
+    border-bottom: 0.4rem solid ${style['theme-color']};
+    background: white;
+    .content {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-top: 3.5rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        .post_subject {
+            display: block;
+            line-height: 1.2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .post_content {
+            display: block;
+            font-size: 0.7rem;
+            color: #482929;
+            letter-spacing: 0;
+            line-height: 1.1rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            opacity: 0.5;
+        }
+    }
+    .cover_container {
+        position: relative;
+        overflow: hidden;
+        width: 96%;
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+        margin-left: 0.5rem;
+        border-radius: 0.2rem;
+        white-space: nowrap;
+        .label {
+            position: absolute;
+            right: 0.2rem;
+            font-size: 0.6rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 2.2rem;
+            line-height: 0.8rem;
+            border-radius: 0.1rem;
+            bottom: 0.2rem;
+        }
+    }
+`;
+
+export const CoverImg = styled.div`
+    background-image: url(${props => props.coverUrl});
+    width: ${props => (props.viewType == 1 ? '100%' : '10rem')};
+    height: ${props => (props.viewType == 1 ? '10rem' : '12rem')};
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 38.2%;
+    border-radius: 0.2rem;
+`;
+
+export const ImageItem = styled.div`
+    background-image: url(${props => props.imgUrl});
+    height: 8.7rem;
+    width: 8.7rem;
+    background-size: cover;
+    background-position: 50% 38.2%;
+    display: inline-block;
+    margin-right: 0.5rem;
+    border-radius: 0.2rem;
+    vertical-align: top;
+    position: relative;
+`;
 
 export const Item = styled.div`
     position: relative;
-    height: 18rem;
     background: white;
-    border-bottom: 0.4rem solid rgb(242, 243, 244);
     .header {
         position: absolute;
         margin-top: 0.8rem;
@@ -43,7 +119,6 @@ export const Item = styled.div`
             width: 2rem;
             height: 2rem;
             margin-left: 0.4rem;
-            /* background: pink; */
             position: relative;
             .avatar_url {
                 position: absolute;
@@ -65,13 +140,13 @@ export const Item = styled.div`
                 text-align: left;
                 height: 0.8rem;
                 display: flex;
-                >p {
+                > p {
                     width: 0.8rem;
                     height: 0.8rem;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    background: rgb(250,191,29);
+                    background: rgb(250, 191, 29);
                     border-radius: 50%;
                     margin-left: 0.5rem;
                     font-size: 0.6rem;
@@ -91,9 +166,9 @@ export const Item = styled.div`
             justify-content: center;
             height: 1rem;
             width: 2.8rem;
-            border: 1px solid rgb(68,170,234);
+            border: 1px solid rgb(68, 170, 234);
             border-radius: 0.2rem;
-            color: rgb(68,170,234);
+            color: rgb(68, 170, 234);
             margin-left: 14rem;
             margin-top: 0.2rem;
         }
@@ -107,7 +182,7 @@ export const Item = styled.div`
 
 export const SwiperItem = styled.div`
     height: 8rem;
-    background: rgb(242, 243, 244);
+    background: ${style['theme-color']};
     img {
         width: 100%;
         height: 100%;

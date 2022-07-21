@@ -7,12 +7,15 @@ import { PicturesOutline, MailOpenOutline, TextOutline, CloseOutline } from 'ant
 function Footer() {
     const [visible, setVisible] = useState(false);
     const { pathname } = useLocation();
-    let pathRes = pathname.split("/")
+    let pathRes = pathname.split("/");
     let pathName = pathRes[1];
+    let pathNames = pathName == 'home'
+    || pathName == 'dynamic' || pathName == 'information'
+    || pathName == 'mypage';
 
     return (
         <div>
-            <Tab pathHome={pathName == 'home'}>
+            <Tab pathHome={pathNames}>
                 <NavLink to="/home">
                     <TabItem>
                         <i className="iconfont icon-shouyecopy"></i>

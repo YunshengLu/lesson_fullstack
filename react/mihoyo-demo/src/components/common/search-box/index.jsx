@@ -9,7 +9,7 @@ const SearchBox = (props) => {
     const navigate = useNavigate()
     const queryRef = useRef();
     const { newQuery } = props;
-    const { handleQuery} = props;
+    const { handleQuery } = props;
     const [query,setQuery] = useState('');
 
     let handleQueryDebounce = useMemo(() => {
@@ -34,10 +34,11 @@ const SearchBox = (props) => {
         setQuery(curQuery)
     },[newQuery])
 
-    const clearQuery = () => {
-        setQuery('');
+    const clearQuery = (e) => {
+        let val = e.currentTarget.value
         queryRef.current.value = '';
         queryRef.current.focus();
+        setQuery(val);
     }
 
     const handleChange = (e) => {

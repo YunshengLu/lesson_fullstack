@@ -19,7 +19,6 @@ const Discuss = ({discussion}) => {
     const [searchHidden, setSearchHidden] = useState(false);
     const searchRef = useRef(null)
     const scroll = useScroll()
-    // console.log(scroll,'########');
 
         // 监听屏幕滚动，超出顶部，组件吸顶
         useEffect(() => {
@@ -29,7 +28,7 @@ const Discuss = ({discussion}) => {
                     searchRef.current.style.position = 'fixed'
                     searchRef.current.style.backgroundColor ='white'
                     searchRef.current.style.marginTop = '-2.98rem'
-                    searchRef.current.style.zIndex = '9999'
+                    searchRef.current.style.zIndex = '99'
                 }
             }else {
                 if(searchHidden && searchRef.current){

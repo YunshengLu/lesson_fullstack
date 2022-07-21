@@ -17,11 +17,12 @@ export const getResultList = (query) => {
     return (dispatch) => {
         getResultListRequest(query) 
             .then((data) => {
-                if(!data) return;
+                if(data.data == null){
+                    dispatch(changeResult(''))
+                }                 
                 let res = data.data.topics || []
                 // console.log(res);
                 dispatch(changeResult(res))
-                dispatch(changeEnterLoading(false))
             })
     }
 }

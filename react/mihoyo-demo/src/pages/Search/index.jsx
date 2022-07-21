@@ -25,7 +25,6 @@ const Search = (props) => {
         changeEnterLoadingDispatch ,
         getResultListDispatch
     } = props
-    console.log(resultList,'########');
 
     const [query,setQuery] = useState('')
     const [show,setShow] = useState(false)
@@ -35,16 +34,13 @@ const Search = (props) => {
     }
 
     const handleQuery = (q) => {
-        // console.log(q);
+        // console.log(q,']]]]]]]]]]]]]]]]');
         setQuery(q)
     }
 
     useEffect(() =>{
-        // console.log(query,'||||||||||||||||');
-        if(query.trim()){
             changeEnterLoadingDispatch(true)
             getResultListDispatch(query)
-        }
     },[query])
 
     const renderResult = () => {

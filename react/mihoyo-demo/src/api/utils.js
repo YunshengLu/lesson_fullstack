@@ -12,53 +12,6 @@ const debounce = (func, delay) => {
     };
 };
 
-// 根据id 返回路径
-const selectGame = (item) => {
-    item = {...item}
-    switch (item.id) {
-        case 1:
-            return "benghuai3"
-        case 2:
-            return "yuanshen"
-        case 3:
-            return "benghuai2"
-        case 4:
-            return "weiding"
-        case 5:
-            return "dabieye"
-        case 6:
-            return "xingqiong"
-        case 8:
-            return "juequling"
-        default:
-            return "dabieye"
-    }
-}
-
-// 截取二级路由路径，返回游戏id
-const SplitPath = (path) => {
-    let pathRes = path.split("/")
-    let pathName = pathRes[2];
-    switch (pathName) {
-        case "yuanshen":
-            return 2
-        case "dabieye":
-            return 5
-        case "juequling":
-            return 8
-        case "benghuai3":
-            return 1
-        case "benghuai2":
-            return 3
-        case "weiding":
-            return 4
-        case "xingqiong":
-            return 6
-        default:
-            return 2
-    }
-}
-
 //截取打乱后的数组的前num 位
 const getRandomArr = (arr, num) => {
     //打乱数组顺序
@@ -115,10 +68,57 @@ const getGMT = function (dateTime) {
     }
 };
 
+// 根据id 返回路径
+const selectGame = (item) => {
+    item = {...item}
+    switch (item.id) {
+        case 1:
+            return "benghuai3"
+        case 2:
+            return "yuanshen"
+        case 3:
+            return "benghuai2"
+        case 4:
+            return "weiding"
+        case 5:
+            return "dabieye"
+        case 6:
+            return "xingqiong"
+        case 8:
+            return "juequling"
+        default:
+            return "dabieye"
+    }
+}
+
+// 截取二级路由路径，返回游戏id
+const SplitPath = (path) => {
+    let pathRes = path.split("/")
+    let pathName = pathRes[2];
+    switch (pathName) {
+        case "yuanshen":
+            return 2
+        case "dabieye":
+            return 5
+        case "juequling":
+            return 8
+        case "benghuai3":
+            return 1
+        case "benghuai2":
+            return 3
+        case "weiding":
+            return 4
+        case "xingqiong":
+            return 6
+        default:
+            return 2
+    }
+}
+
 export {
     debounce,
-    selectGame,
-    SplitPath,
     getRandomArr,
     getGMT,
+    selectGame,
+    SplitPath,
 }

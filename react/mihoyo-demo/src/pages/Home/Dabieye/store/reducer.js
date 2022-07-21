@@ -1,7 +1,12 @@
 import * as actionTypes from './constants';
 
 const defaultState = {
-    dabieyeActivityList: [],
+    ActivityList: [],
+    DiscussionList: [],
+    officialList: [],
+    suggestPostList: [],
+    postStat: [],
+    carouselsList: [],
 }
 
 export default (state = defaultState, action) => {
@@ -9,7 +14,27 @@ export default (state = defaultState, action) => {
         case actionTypes.SET_ACTIVITY_LIST:
             return {
                 ...state,
-                dabieyeActivityList: action.data
+                ActivityList: action.data
+            }
+        case actionTypes.GET_DISCUSS_LIST:
+            return {
+                ...state,
+                DiscussionList: action.data
+            }
+        case actionTypes.GET_SUGGESTPOST_LIST:
+            return {
+                ...state,
+                suggestPostList: action.data
+            }
+        case actionTypes.GET_POSTSTAT_LIST:
+            return {
+                ...state,
+                postStat: action.data
+            }
+        case actionTypes.GET_CAROUSELS_LIST:
+            return {
+                ...state,
+                carouselsList: action.data
             }
         default:
             return state

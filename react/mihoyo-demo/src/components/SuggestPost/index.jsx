@@ -6,6 +6,8 @@ import {
     SwiperItem,
     TabItem,
     ContentWrapper,
+    ImageItem,
+    CoverImg
 } from "./style"
 import Swiper from "swiper"
 import classnames from "classnames"
@@ -18,6 +20,7 @@ import {
     BankcardOutline, 
     FileWrongOutline,
 } from 'antd-mobile-icons'
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const SuggestPost = ({suggestPostList, carouselsList}) => {
 
@@ -166,6 +169,16 @@ const SuggestPostContent = ({Post}) => {
         )
     }
 
+    // const coverImg = () => {
+    //     let coverImgs = Post.post.images
+    //     let len = coverImgs.length
+    //     let Img = []
+    //     for(let i = 0;i < 3; i++) {
+    //         Img.push(coverImgs[i])
+    //     }
+    //     return Img
+    // }
+    
     return (
         <ItemConent>
             <Item>
@@ -191,11 +204,48 @@ const SuggestPostContent = ({Post}) => {
                     </div>
                     {details(Post.user.nickname)}
                 </div>
-                <div className="content">
-                </div>
-                <div className="footer">
-                </div>
             </Item>
+            
+            <div className="content">
+                <span className="post_subject">{Post.post.subject}</span>
+                {
+                    Post.post.content && 
+                    <span className="post_content">
+                        {Post.post.content}
+                    </span>
+                }
+            </div>
+
+            <PhotoProvider>
+            <div className="cover_container">
+                {
+                    Post.post.cover && 
+                    <PhotoView src={Post.post.cover}>
+                    <CoverImg 
+                        coverUrl={Post.post.cover}
+                        viewType={Post.post.view_type}
+                        />
+                    </PhotoView>
+                }
+                {
+                Post.post.images && !Post.post.cover &&
+                Post.post.images.map((item, index) =>(
+                        <PhotoView key={index} src={item}>
+                        <ImageItem imgUrl={item} />
+                        </PhotoView>
+                        ))
+                }
+                {
+                    Post.post.images && !Post.post.cover &&
+                    <div className="label">
+                        <i className='iconfont icon-gengduotupian'></i>
+                        +{Post.post.images.length}
+                    </div>
+                }
+            </div>
+            </PhotoProvider>
+                            
+            <div className="footer"></div>
         </ItemConent>
     )
 }
