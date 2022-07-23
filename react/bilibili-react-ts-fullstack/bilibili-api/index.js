@@ -3,7 +3,11 @@ const Koa = require('koa'); // http server
 const router = require('koa-router')(); // koa 路由中间件
 const cors = require('koa-cors')
 const app = new Koa();
-const {fetchSuggest} = require('./api')
+const {
+    fetchSuggest,
+    fetchHotword,
+    fetchSearchData,
+} = require('./api')
 // const crossDomain = require('./middleware/cross-domain') // 支持跨域
 
 //  /videos get   [{}]
@@ -42,9 +46,10 @@ router.get("/search/suggest", async (ctx, next) => {
     try{
         const data = await fetchSuggest(w);
         // console.log(data);
+        // api 前后端交互的数据格式是JSON
         let resData = {
-            code: "1",
-            msg: "success"
+            code: "1", // 成功响应 200
+            msg: "success" // 成功 | 失败原因
         }
         if (data.code === 0) {
             resData.data = data.result;
@@ -53,6 +58,47 @@ router.get("/search/suggest", async (ctx, next) => {
             resData.msg = "fail";
         }
         // ctx.set('content-type', 'json');
+        ctx.body = resData
+    } catch(e) {
+        // 处理错误
+        next(e)
+    } 
+})
+// 接口服务
+router.get("/search/hotword",async (ctx, next) => {
+    try{
+        const data = await fetchHotword(); // rpc 调用
+        let resData = {
+            code: "1", // 成功响应 200
+            msg: "success" // 成功 | 失败原因
+        }
+        if (data.code === 0) {
+            resData.data = data.list;
+        } else {
+            resData.code = "0";
+            resData.msg = "fail";
+        }
+        // ctx.set('content-type', 'json');
+        ctx.body = resData
+    }catch(e){
+        next(e)
+    }
+})
+
+router.get("/search", async (ctx, next) => {
+    const w = encodeURI(ctx.query.keyword);
+    try{
+        const data = await fetchSearchData(w);
+        let resData = {
+            code: "1", // 成功响应 200
+            msg: "success" // 成功 | 失败原因
+        }
+        if (data.code === 0) {
+            resData.data = data.data;
+        } else {
+            resData.code = "0";
+            resData.msg = "fail";
+        }
         ctx.body = resData
     } catch(e) {
         // 处理错误
