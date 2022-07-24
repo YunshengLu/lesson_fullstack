@@ -122,14 +122,15 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   
+  let price = state.cart.list.reduce((total,item) => total + (item.check ? 
+    parseFloat(item.goodsPrice*item.goodsNum) : 0),0)
   return {
     goodsList: state.cart.list,
     // 全选？ 状态？ redux 管理 
     // redux  <-  驱动 -> UI
     checkAll: state.cart.list.filter(
       item => item.check).length == state.cart.list.length,
-    price: state.cart.list.reduce((total, item) => 
-    total + item.check? parseFloat(item.goodsPrice)*item.goodsNum:0, 0)
+    price: price
 
   }
 }
