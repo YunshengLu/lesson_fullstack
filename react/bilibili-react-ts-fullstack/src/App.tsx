@@ -1,9 +1,11 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect, Suspense } from 'react'
 import './App.css'
 import { 
   getVideosRequest, 
   getHotwordRequest
 } from '@/api/index'
+import Routes from '@/routes'
+import { connect } from 'react-redux'
 
 function App() {
 
@@ -25,7 +27,9 @@ function App() {
 
   return (
     <div className="App">
-
+      <Suspense fallback={null}>
+        <Routes />
+      </Suspense>
     </div>
   )
 }

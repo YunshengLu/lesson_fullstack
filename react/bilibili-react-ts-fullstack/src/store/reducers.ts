@@ -5,6 +5,7 @@ import * as ActionTypes from "./action-types";
 // tree-sharking 黄叶子
 
 const initalState = {
+    loading: true,
     // 分支
     search: {
         suggest: [],
@@ -40,6 +41,14 @@ const combineSearch = (state = initalState.search, action: AnyAction) => {
     }
 }
 
+const combineLoading = (state = initalState.loading, action: AnyAction) => {
+    switch(action.type) {
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
-    search: combineSearch
+    search: combineSearch,
+    loading: combineLoading,
 })

@@ -148,4 +148,17 @@
     4. actions 中 添加 AnyAction 一定有type 字段          
     5. 在异步的action 里  约定 dispatch:Dispatch<AnyAction>          
         - 一定会调用一个同步的action AnyAction              
-    6. redux 需要的最基础的typescript 搞完了              
+    6. redux 需要的最基础的typescript 搞完了             
+    
+- redux typescript 使用                
+    - store 数据流管理的store 单例(设计模式Singleton) (由combineReducers 返回的单一状态树)            
+        1. window as any 断言 跳过ts 编译阶段的检测  ts 语法编译                
+            只有运行在浏览器端才有window 对象           
+        2. ts vite  js 后  工程化            
+        3. 在浏览器运行  js  短暂的编译阶段   变量提升   window             
+        4. 运行          
+            window as any  断言 assert          
+    - thunk as ThunkMiddleware 断言              
+    - 提供 state  rootState 自定义类型  ReturnType<typeof reducers>             
+        state.search.   :rootState 推断  代码写起来更快          
+        正确性  多人协作           
