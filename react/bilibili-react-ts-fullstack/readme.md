@@ -162,3 +162,49 @@
     - 提供 state  rootState 自定义类型  ReturnType<typeof reducers>             
         state.search.   :rootState 推断  代码写起来更快          
         正确性  多人协作           
+
+- bilibili 首页tab  功能          
+    - antd mobile          
+    - 数据流角度         
+
+- 后端基本技能         
+    api 数据怎么提供           
+    1. 抖音等没有移动网页的应用？            
+        抓包 代理工具  fiddler   app          
+    2. 缓存 304 Not Modified           
+    3. 单点入口 景区入口            
+        http 服务的启动          
+        中间件服务(路由)的挂载           
+        模块放到其他的地方去            
+        简单，简洁           
+        MVC model 模型层  数据库的抽象             
+        view html 模板            
+        controllers 控制器（校验参数）              
+    4. 构建数据的模型能力            
+        B站 首页多级菜单          
+        - 树状结构           
+        - 0  第一级菜单            
+            每个菜单项 {tid: 1, typename: "动画"}            
+            tid 唯一 typename  标题              
+        - tid  1  父          
+            1: [{tid: 33, typename: "MAD·AMV"}...]          
+        - class 声明  模块化，ts 要求比较严格   export {}         
+            children: PartitionType[]            
+
+- model 层 ts 写法            
+    1. model 归属 ts  比较难           
+    2. type interface class 关键字           
+        都可以声明类型           
+    3. 每个架构级别页面下 添加一个index.ts 文件，方便引入               
+
+- partitionType 从 后端到前端  完整的数据流            
+    1. 源头          
+        GET /partitions  获取api 服务数据         
+    2. 前端          
+        api/getPartitionsRequest 接口         
+    3. redux         
+        异步action  结合models 校验         
+        dispatch 同步 action          
+        reducer  重新计算          
+    4. connect  mapStateToProps  state:rootState              
+    5. 组件  props  结构             
