@@ -1,4 +1,4 @@
-export {
+export type {
     PartitionType,
-    createPartitionTypes
+    // createPartitionTypes
 } from "./PartitionType";

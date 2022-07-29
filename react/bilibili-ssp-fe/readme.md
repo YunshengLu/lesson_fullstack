@@ -72,4 +72,10 @@
         面试官的自由度更大            
     2. 给面试官下套            
         卖一个破绽 Promise.all() + 数据管理  loading  严谨问题             
-        Promise.all()
+        Promise.all()           
+
+- redux 里 进入新的状态，不希望也不应该去改变或引用旧状态，甚至因为redux 一套严格的状态管理设计模式          
+    我们希望状态对象是不可改变的，只能生成新的对象  Object.assign  {...}  ImmutableJS           
+    Object.freeze()           
+
+- 下一个 ts + node + redux 项目中，刻意的加注释

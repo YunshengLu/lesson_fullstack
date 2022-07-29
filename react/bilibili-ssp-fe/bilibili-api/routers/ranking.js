@@ -7,8 +7,8 @@ const {
 // 排行榜菜单
 router.get('/partitions', (ctx, next) => {
     const resData = {
-        code: '0',
-        msg: 'success',
+        code: 0,
+        message: '0',
         data: rankingPartitions,
     };
     ctx.body = resData;
