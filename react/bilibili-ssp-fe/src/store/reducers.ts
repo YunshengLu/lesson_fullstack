@@ -2,12 +2,21 @@ import { combineReducers, AnyAction } from 'redux';
 import * as ActionTypes from "./action-types";
 
 const initialState = {
+    loading: true,
     oneLevelPartitions: [],
 }
 
-function combineOneLevelPartitions(oneLevelPartitions = 
+const loadingReducer = (state = initialState.loading, action: AnyAction) => {
+    switch (action.type) {
+
+        default: 
+            return state
+    }
+}
+
+const combineOneLevelPartitions = (oneLevelPartitions = 
     initialState.oneLevelPartitions,
-    action: AnyAction) {
+    action: AnyAction) => {
     switch (action.type) {
         case ActionTypes.SET_ONE_LEVEL_PARTITIONS:
         return action.oneLevelPartitions;
@@ -17,5 +26,6 @@ function combineOneLevelPartitions(oneLevelPartitions =
 }
 
 export default combineReducers({
+    loading: loadingReducer,
     oneLevelPartitions: combineOneLevelPartitions,
 })
