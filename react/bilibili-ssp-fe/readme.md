@@ -102,4 +102,30 @@
     - 封装一个 video-item 组件              
         ts  propTypes             
         图片懒加载             
-    - video models/
+    - video models/              
+
+- 为什么要来B站？             
+    1. 表扬 B站  弹幕文化             
+    2. 3年 合格的工程师，服务B站的用户            
+    3. 5年内  融入B站的创新性产品，为公司的发展贡献自己的智慧               
+
+- video 列表 403 Forbidden ?           
+    1. 图片资源属于谁？            
+        B站服务器 图片服务器 分布式 ?           
+    2. 4XX 用户错误             
+        403 Forbidden 权限问题，安全性问题   不属于你的资源  省去一些流量            
+        meta referer 来源           
+        肉鸡攻击 image  url + get + host(本站，其他) 侵权                
+        5XX 服务器错误          
+    3. 前端图片访问403 借助node 解决            
+        版权          
+        限流          
+        安全          
+        /transfer/image 中转                
+        脱离浏览器表达 协议层             
+        ?pic=...             
+        node-fetch  request 库  请求  await  koa  async  下载完 response               
+        转成buffer()  图片在传输的时候都是二进制流， node buffer  对应之  await            
+        远程图片就来到本地服务器            
+        前端访问的是自己的服务器，不存在forbidden 问题              
+        ctx.set('Content-Type', 'images/jpeg');              
