@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from '@/components/Header';
+import VideoItem from '@/components/VideoItem';
 import { getPartitionsRequest } from '@/api/request';
 import { connect } from 'react-redux';
 import { rootState } from '@/store';
@@ -9,9 +10,11 @@ import {
 } from '@/store/actionCreators'
 import {
     HomeWrapper,
+    ContentWrapper,
 } from './style'
 import { PartitionType } from '@/models/index'
 import TabBar from '@/components/TabBar'
+import { formatTenThousand } from '@/utils/string'
 
 interface HomeProps {
     loading: boolean;
@@ -46,6 +49,14 @@ const Home: React.FC<HomeProps> = (props)=> {
         .concat(oneLevelPartitions);
     tabBarData.push({id: -1, name: '直播'})
 
+    const videoElements = rankingVideos.map(
+        (video) => <VideoItem 
+                    video={video} 
+                    key={video.aId} 
+                    showStatistics={true}
+                    />
+        )
+
     return (
         <HomeWrapper>
             <Header />
@@ -61,6 +72,11 @@ const Home: React.FC<HomeProps> = (props)=> {
                     <i className="icon-arrow-down"></i>
                 </div>
             </div>
+            <ContentWrapper>
+                <div className="video-list clear">
+                    {videoElements}
+                </div>
+            </ContentWrapper>
         </HomeWrapper>
     );
 };

@@ -16,7 +16,7 @@ export const getHomeDataAction = (rId: string) => {
             getRankingPartitionRequest(),
             getRankingRequest(rId),
         ]).then(([partitionResult, rankingPartitionResult, videoResult]) => {
-            console.log(partitionResult,'+++++++');
+            // console.log(partitionResult,'+++++++');
             const oneLevelPartitions = partitionResult.data[0]
             oneLevelPartitions.filter((partition: any) => 
                     [13, 23, 11, 177].indexOf(partition.id) === -1)
