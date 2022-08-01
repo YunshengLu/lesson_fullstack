@@ -1,0 +1,5 @@
+- window 下 Nginx命令            
+    - start nginx.exe 启动 nginx            
+    - nginx.exe -s stop 停止 nginx                  
+    - nginx.exe -s reload 重新加载 nginx                
+    - nginx.exe -s quit 退出 nginx
