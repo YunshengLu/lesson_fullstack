@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*8^w!)887*#pw=hn&+30p+59wc1g883p2src1o0%qc@br+wirt'
+SECRET_KEY = '*o1*rc%k@(d@&c6*zt=28=zz(+4+8we2^+6a6=y&8ivfeb8uka'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -68,6 +68,7 @@ TEMPLATES = [
     },
 ]
 
+# wsgi起到信息输出的作用
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
@@ -78,7 +79,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'myblog',
+    #     'USER': 'root',
+    #     'PASSWORD': '202015lQD',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306'
+    # }
 }
 
 
@@ -119,5 +128,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# 媒体文件夹
 MEDIA_URL = '/upload/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload').replace('\\', '/')
