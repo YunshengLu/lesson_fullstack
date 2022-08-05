@@ -21,9 +21,23 @@
     5. 本地存储 用户端           
         1. localStorage sessionStorage             
         key => value  setItem('userInfo', JSON.stringify(user))              
-        JSON.parse(localStorage.getItem('userInfo'))            
-        2. 数据库 IndexDB sql            
-        3. cookie            
+        JSON.parse(localStorage.getItem('userInfo'))  5-10M            
+            应用场景 举出哪些？              
+            - 存储地理位置 geolocation            
+            - 存储登录信息 取代cookie 登录  基于token  localStorage           
+                 cookie uid -> 服务器端 session中间件(基于cookie) 内存会话存储对象key value           
+            - 用户信息的储存 昵称 头像             
+            - redux 一些需要持久化的状态            
+                todos [{text: , done}] dispatch localStorage.setItem('')             
+                getItem() dispatch setTodos()            
+                logined              
+                userInfo            
+                主题颜色，icon，风格，语言(国际化)en -> cn              
+            - 用户设置             
+        2. 数据库 IndexDB sql  几十M            
+        3. cookie HTTP 无状态 每次都带上，加大了请求的性能开销 session 很小              
+            4kb            
+        4. 缓存  静态资源  js 不介入了，状态码             
     6. Cache Manifest  离线存储功能             
     7. Web Worker  浏览器给的js  多线程能力            
         - js 是单线程的             
