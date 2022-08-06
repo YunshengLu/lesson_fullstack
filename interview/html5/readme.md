@@ -64,3 +64,14 @@
             授权一次后，默认上次，除非清空            
         - 浏览器嗅探            
         - edge可以正常使用，chrome 等不可以，开启了https的应用才可以使用             
+
+- 传统的登录cookie + session -> token 登录 (localStorage)              
+    axios 拦截  authorization token          
+    1. cookie 维护用户状态            
+        克制， session_id uid           
+    2. cookie expires/max age  domain path          
+        httponly  Same Site Secure                 
+    3. session 服务器端              
+    4. session 基于cookie             
+        username password session 中间件 session 对象  同时生成cookie 对象                
+        sid -> 客户端也有了sid cookie -> /posts/save -> session中间件 -> 拿到cookie sid -> 后端session 内存空间 sid 作为key 去查找 会话对象里的存储 -> 登录了，用户名，头像...... 不需要去数据库查找 -> 数据库开销非常大，              
