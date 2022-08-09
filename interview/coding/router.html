@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路由</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        // BrowserRouter HashRouter  
+        // hash路由 和 history
+        // hash #开始 兼容性好，缺点 不如history 和后端路由一样  
+        // hashChange pushState(html5 history) 共同点：当前页面不会跳转，规则不一样
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', (event) => {
+            window.location.href = '#/user'; // BOM url 改变 页面不跳转
+        })
+        window.onhashchange = (event) => {
+            const newURL = event.newURL;
+            const oldURL = event.oldURL;
+            console.log(newURL, oldURL, location.hash)
+        }
+    </script>
+</body>
+
+</html>
