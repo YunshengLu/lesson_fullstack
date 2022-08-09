@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" id="text">
+    </div>
+    <script>
+        const textInput = document.getElementById("text");
+        // text.onclick = function (e) {
+        //     console.log('onclick');
+        // }
+        text.addEventListener('click', function (){
+            console.log('input clicked');
+        }, false);
+        box.addEventListener('click', function (){
+            console.log('box clicked');
+        }, false);
+        text.onfocus = function (e) {
+            console.log('onfocus');
+        }
+        text.onmousedown = function (e) {
+            console.log('onmousedown');
+        }
+        text.onmouseenter = function (e) {
+            console.log('onmouseenter');
+        }
+    </script>
+</body>
+
+</html>
