@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 不设置过期 关闭浏览器后消失
+        function setCookie(name, value, day = 0) {
+            // 过期时间不是必传的
+            if (day != 0) {
+                var expires = day*24*60*60*1000;
+                let date = new Date(+ new Date() + expires);
+                console.log(date.toUTCString());
+                document.cookie = `${escape(name)}=${value};expires=${date.toUTCString()}`;
+            } else {
+                document.cookie = `${escape(name)}=${value}`;
+            }
+        }
+
+        setCookie('name','age',1)
+    </script>
+</body>
+</html>
