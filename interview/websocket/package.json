@@ -1,0 +1,17 @@
+{
+  "name": "websocket",
+  "version": "1.0.0",
+  "description": "HTTP 协议有什么限制               \r     - 无状态               \r     - 完成即断开             \r     - 单向传输  服务器被动伺服",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.19",
+    "ws": "^8.8.1"
+  }
+}
