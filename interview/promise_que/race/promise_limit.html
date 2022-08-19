@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function loadImg(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = function() {
+                    resolve(img);
+                }
+                img.onerror = function() {
+                    reject(new Error('Could not load image at ' + url));
+                }
+                img.src = url;
+            })
+        }
+
+        // loadImg('https://ts2.cn.mm.bing.net/th?id=ORMS.b4612bb5222eb97e481af3b08328fbc4&pid=Wdp&w=300&h=225&qlt=90&c=1&rs=1&dpr=2&p=0')
+        //     .then(img => {
+        //         document.body.appendChild(img)
+        //     })
+        const urls = [
+            'https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA10FALl?w=624&h=350&q=60&m=6&f=jpg&u=t',
+            'https://ts2.cn.mm.bing.net/th?id=ORMS.b4612bb5222eb97e481af3b08328fbc4&pid=Wdp&w=300&h=225&qlt=90&c=1&rs=1&dpr=2&p=0',
+            'https://ts2.cn.mm.bing.net/th?id=ORMS.cd2ca3e1046f51c117aacd5840fd5e2e&pid=Wdp&w=300&h=225&qlt=90&c=1&rs=1&dpr=2&p=0',
+            'https://ts2.cn.mm.bing.net/th?id=ORMS.38e514c7202d09644ffe33e10c406d8a&pid=Wdp&w=300&h=225&qlt=90&c=1&rs=1&dpr=2&p=0',
+            'https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA10FX50?w=624&h=350&q=60&m=6&f=jpg&u=t',
+            'https://ts2.cn.mm.bing.net/th?id=ORMS.e5844a8cf369fc3aa30e437b15a54b9c&pid=Wdp&w=300&h=225&qlt=90&c=1&rs=1&dpr=2&p=0',
+        ]
+        // promise limit 限流
+        function limitLoad(urls, handler, limit) {
+            let sequence = [].concat(urls)
+            // console.log(sequence);
+            let promises = sequence.splice(0, limit).map((url, index) => {
+                return handler(url).then(() => {
+                    return index; // Promise.resolve(index)
+                })
+            })
+            // console.log(promises);
+            return sequence
+                .reduce((pCollect, url) => {
+                    // 每个promise
+                    return pCollect.then(() => {
+                        return Promise.race(promises);
+                    })
+                    .then(fastestIndex => {
+                        promises[fastestIndex] = handler(url).then(
+                            () => {
+                                return fastestIndex
+                            }
+                        )
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+                },Promise.resolve())
+                .then(() => {
+                    return Promise.all(promises)
+                })
+        }
+
+        limitLoad(urls, loadImg, 3)
+            .then(res => {
+                console.log('图片全部加载完毕');
+            })
+            .catch(err => console.log(err))
+    </script>
+</body>
+</html>
