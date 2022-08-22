@@ -17,4 +17,7 @@
 - Promise.resolve(1)
     创建一个Promise 实例，return 已经resolved 后            
     then 显示的return promise  Promise.resolve(1)                
-        then catch 直接return  非promise 链式res
+        then catch 直接return  非promise 链式res               
+
+- Promise 的then catch 可以被调用多次，Promise 构造函数和状态改变只能执行一次                
+    数组来收集 []           
