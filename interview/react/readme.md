@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @version: 
+ * @Author: LuyunSheng
+ * @Date: 2022-08-23 10:11:44
+ * @LastEditTime: 2022-08-24 16:01:05
+-->
 - 虚拟DOM             
     react 不做DOM 编程，性能开销太大 Jquery             
     html + css 渲染树，一家的               
@@ -36,3 +43,24 @@
 - Element 类 type props children            
     共同点  树 文本节点是叶子节点              
 - render 过程 虚拟DOM 转变成真实DOM，挂载到app 的过程             
+
+- react/vue 等MVVM 框架               
+    View 多次编译            
+    Model 模型 useState ，虚拟DOM                
+    VM                
+    比DOM编程更适合web2.0时代                
+    - createElement 形成虚拟DOM树               
+    - render DOM 节点              
+    - renderDOM 挂载一下                 
+    - setAttr              
+    更新之后，打补丁，性能优化                  
+    - diff 树的遍历 递归 收集到所有的patches 按位收集               
+    - 打补丁 patch             
+
+    - 传统的简单的stack                
+        递归walk 一直入栈来遍历，           
+        只要开始根本停不下来                 
+        单线程的js 变卡 其他任务没有执行机会             
+    - fiber           
+        把一棵大树的遍历任务，切片(时间纬度)调度管理 fiber               
+        算法叫reconcile               
