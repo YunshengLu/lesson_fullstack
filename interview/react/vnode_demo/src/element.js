@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: LuyunSheng
+ * @Date: 2022-08-23 11:41:38
+ * @LastEditTime: 2022-08-24 14:59:21
+ */
 // 虚拟DOM 树的VNODE
 class Element {
     constructor(type, props, children) {
@@ -54,4 +61,4 @@ function renderDOM(el, target) {
     target.appendChild(el);
 }
 
-export { createElement, render, renderDOM };
+export { createElement, render, renderDOM, setAttr, Element };
