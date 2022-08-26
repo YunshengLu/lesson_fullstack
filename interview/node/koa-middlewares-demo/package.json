@@ -1,0 +1,17 @@
+{
+  "name": "koa-middlewares-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "koa": "^2.13.4",
+    "nodemon": "^2.0.19"
+  }
+}
