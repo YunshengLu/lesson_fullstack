@@ -1,0 +1,72 @@
+<!--
+ * @Description: 
+ * @version: 
+ * @Author: LuyunSheng
+ * @Date: 2022-09-02 10:13:48
+ * @LastEditTime: 2022-09-02 10:44:32
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            margin: 10px;
+            width: 500px;
+            height: 200px;
+            background-color: #eee;
+            color: #666;
+            text-align: center;
+        }
+        .item {
+            height: 100px;
+        }
+        .item p {
+            margin: 0;
+        }
+        .a {
+            /* flex: 1; */
+            flex-shrink: 1;
+            width: 300px;
+            background-color: #ff4466;
+        }
+        .b {
+            flex-shrink: 2;
+            width: 150px;
+            background-color: #426983;
+        }
+        .c {
+            flex-shrink: 3;
+            width: 200px;
+            background-color: #61dafb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item a">
+            <p>A</p>
+            <p>width:300</p>
+            <p>flex-shrink:1</p>
+        </div>
+        <div class="item b">
+            <p>B</p>
+            <p>width:150</p>
+            <p>flex-shrink:2</p>
+        </div>
+        <div class="item c">
+            <p>C</p>
+            <p>width:200</p>
+            <p>flex-shrink:3</p>
+        </div>
+    </div>
+</body>
+</html>
