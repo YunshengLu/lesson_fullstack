@@ -1,0 +1,56 @@
+<!--
+ * @Description: 
+ * @version: 
+ * @Author: LuyunSheng
+ * @Date: 2022-09-05 11:42:33
+ * @LastEditTime: 2022-09-05 12:20:14
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="
+    height: 2000px;
+    width: 100%;
+    background-color: green;
+">
+    <script>
+        let count = 1;
+        function scrollFn() {
+            console.log('页面滚动:',count++);
+        }
+        
+        const newFn = throttle(scrollFn, 500);
+
+        document.onscroll = newFn;
+
+        function throttle(fn, time) {
+            let pre = 0;
+            let timeout = null;
+            return function(...args) {
+                const now = Date.now();
+                // 如果超过了时间间隔
+                if (now - pre > time) {
+                    pre = now;
+                    fn.apply(this, ...args);
+                } else {
+                    // 如果在时间间隔内，则后续的事件会直接清楚
+                    if (timeout) {
+                        clearTimeout(timeout);
+                        timeout = null;
+                    }
+                    // 最后一次的事件会触发
+                    timeout = setTimeout(() => {
+                        pre = now;
+                        fn.apply(this, args);
+                    }, time);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
