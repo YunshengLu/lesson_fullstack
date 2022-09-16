@@ -3,11 +3,12 @@
  * @version: 
  * @Author: LuyunSheng
  * @Date: 2022-09-15 19:51:02
- * @LastEditTime: 2022-09-15 21:04:03
+ * @LastEditTime: 2022-09-16 22:57:15
 -->
 <template>
     <div>
         <v-header :seller="seller" />
+        <router-view/>
     </div>
 </template>
 <script>
