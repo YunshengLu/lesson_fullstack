@@ -21,6 +21,32 @@
                 <span class="count">{{ seller.supports.length }}个</span>
                 <i class="icon-keyboard_arrow_right"></i>
             </div>
+            <div class="background">
+                <img :src="seller.avatar" width="100%" height="100%" alt="" />
+            </div>
+            <div class="detail" v-show="detailShow">
+                <div class="detail-wrapper clearfix">
+                    <div class="detail-main">
+                        <div class="name">{{ seller.name }}</div>
+                        <div class="star-wrapper"></div>
+                        <div class="title">
+                            <div class="line"></div>
+                            <div class="text">优惠信息</div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="title">
+                            <div class="line"></div>
+                            <div class="text">商家公告</div>
+                        </div>
+                        <div class="bulletin">
+                            <div class="content">{{ seller.bulletin }}</div>
+                        </div>
+                    </div>
+                    <div class="detail-close" @click="hideDetail">
+                        <i class="icon-close"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -35,10 +61,16 @@ export default {
     data() {
         return {
             classMap: ['decrease', 'discount', 'special', 'invoice', 'guarantee'],
+            detailShow: false,
         };
     },
     methods: {
-        showDetail() {},
+        showDetail() {
+            this.detailShow = true;
+        },
+        hideDetail() {
+            this.detailShow = false;
+        }
     },
 };
 </script>
@@ -112,4 +144,61 @@ export default {
                 margin-left 2px
                 line-height 24px
                 font-size 10px
+        .background
+            position absolute
+            top 0
+            left 0
+            width 100%
+            height 100%
+            z-index -1
+            filter blur(10px)
+        .detail
+            position fixed
+            z-index 100
+            top 0
+            left 0
+            width 100%
+            height 100%
+            overflow auto
+            backdrop-filter blur(10px)
+            opacity 1
+            background rgba(7, 17, 27, 0.8)
+            .detail-wrapper
+                width 100%
+                min-height 100%
+                .detail-main
+                    margin-top 64px
+                    padding-bottom 64px
+                    .name
+                        line-height 16px
+                        text-align center
+                        font-size 16px
+                        font-weight 700
+                    .title
+                        display flex
+                        width 80%
+                        margin 28px auto 24px auto
+                        .line
+                            flex 1
+                            position relative
+                            top -6px
+                            border-bottom 1px solid rgba(255, 255, 255, 0.2)
+                        .text
+                            padding 0 12px
+                            font-size 14px
+                            font-weight 700
+                    .bulletin
+                        width 80%
+                        margin 0 auto
+                    .content
+                        padding 0 12px
+                        line-height 24px
+                        font-size 12px
+            .detail-close
+                position relative
+                width 32px
+                height 32px
+                margin -64px auto 0 auto
+                clear both
+                font-size 12px
 </style>
