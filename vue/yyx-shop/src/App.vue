@@ -3,12 +3,17 @@
     <h1>Shopping Cart Example</h1>
     <hr>
     <h2>Products</h2>
+    <ProductList/>
   </div>
 </template>
 
 <script>
+import ProductList from './components/ProductList'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    ProductList
+  }
 }
 </script>
 

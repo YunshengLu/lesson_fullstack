@@ -18,3 +18,9 @@
     不能直接写 数据统一 关注修改 消灭不一致            
     dispatch action {type, payload}            
     reducer case 新的状态 mvvm               
+
+    vuex             
+    dispatch action 异步中间件             
+    vuex 没有reducer 函数  state {}             
+    commit mutations 函数            
+    mutations 函数可以直接修改 状态           
